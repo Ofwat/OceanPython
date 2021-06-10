@@ -5,15 +5,18 @@ def replacespaces(dataframe):
     dataframe = dataframe.replace(r'^\s*$', np.nan, regex=True)
     return dataframe
 
+
 def replacedashes(dataframe, iteratorvariable):
     return dataframe[iteratorvariable].replace('-', np.nan)
+
 
 def replacenullvalues(dataframe, iteratorvariable):
     return np.where(dataframe[iteratorvariable].isnull(), None, dataframe[iteratorvariable])
 
+
 def replaceyeswithtrues(dataframe, iteratorvariable):
-    # dataframe[iteratorvariable] = dataframe[iteratorvariable].replace('yes', 'Yes')
     return np.where(dataframe[iteratorvariable].str.lower() == 'yes', 'TRUE', None)
+
 
 def isnumericandonlynumeric(dataframe, iteratorvariable):
     dataframe['isnumeric_' + iteratorvariable] = (dataframe[iteratorvariable].apply(
@@ -27,5 +30,3 @@ def isnumericandonlynumeric(dataframe, iteratorvariable):
     na_mask = dataframe['onlynumeric_' + iteratorvariable].notnull()
     dataframe.loc[na_mask, 'onlynumeric_' + iteratorvariable] = dataframe.loc[
         na_mask, 'onlynumeric_' + iteratorvariable].astype(float).round(18)
-
-
