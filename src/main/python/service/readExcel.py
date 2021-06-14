@@ -1,6 +1,6 @@
 import pandas as pd
-from util import validationMethods
-from util import dbutils
+from util import validations
+from util import dbUtils
 
 
 # Main program
@@ -146,22 +146,22 @@ def upload_data():
                     'price_control_allocation_business_retail': 'float64',
                     'price_control_allocation_direct_procurement_for_customers': 'float64',
                     'price_control_allocation_dummy_control': 'float64'})
-    validationMethods.replacespaces(df)
+    validations.replacespaces(df)
     mylist = []
     for column in df:
         mylist.append(column)
     for i in mylist:
-        df[i] = validationMethods.replacedashes(df, i)
-        df[i] = validationMethods.replacenullvalues(df, i)
+        df[i] = validations.replacedashes(df, i)
+        df[i] = validations.replacenullvalues(df, i)
         if i in ['drinking_water_quality_compliance', 'water_quality_contacts', 'supply_interruptions_3_hours',
                  'pollution_incidents_cat_3', 'internal_sewer_flooding', 'scheme_specific_factor', 'asset_health',
                  'nep',
                  'aim']:
-            df[i] = validationMethods.replaceyeswithtrues(df, i)
+            df[i] = validations.replaceyeswithtrues(df, i)
         if i in ['underp_payment1_incentive_rate_gbpm', 'underp_payment2_incentive_rate_gbpm',
                  'underp_payment3_incentive_rate_gbpm', 'underp_payment4_incentive_rate_gbpm',
                  'outp_payment1_incentive_rate_gbpm', 'outp_payment2_incentive_rate_gbpm']:
-            validationMethods.isnumericandonlynumeric(df, i)
+            validations.isnumericandonlynumeric(df, i)
 
     # Read excel for PR19 and create csv with columns needed
     df1 = pd.read_excel(r'../resources/Pauls_latest_PR19.xlsx',
@@ -257,15 +257,15 @@ def upload_data():
                       'outp_payment_incentive_enhanced_outp_payment': 'object', 'standard_odi_cal': 'object',
                       'standard_odi_operand': 'object',
                       'standard_odi_operand_note': 'object'})
-    validationMethods.replacespaces(df1)
+    validations.replacespaces(df1)
     mylist1 = []
     for column in df1:
         mylist1.append(column)
     for j in mylist1:
-        df1[j] = validationMethods.replacedashes(df1, j)
-        df1[j] = validationMethods.replacenullvalues(df1, j)
+        df1[j] = validations.replacedashes(df1, j)
+        df1[j] = validations.replacenullvalues(df1, j)
         if j in ['scheme_specific_factor', 'asset_health', 'nep', 'aim']:
-            df1[j] = validationMethods.replaceyeswithtrues(df1, j)
+            df1[j] = validations.replaceyeswithtrues(df1, j)
         if j in ['underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply',
                  'underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply',
                  'underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply',
@@ -274,7 +274,7 @@ def upload_data():
                  'outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply',
                  'outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply',
                  'outp_payment_incentive_enhanced_outp_payment']:
-            validationMethods.isnumericandonlynumeric(df1, j)
+            validations.isnumericandonlynumeric(df1, j)
 
     # Read excel for PR14 Submeasures
     df2 = pd.read_excel(r'../resources/AnnesPR14.xlsx',
@@ -358,31 +358,31 @@ def upload_data():
                       'actual_performance_compared_with_previous_actual_performance_2017_18_to_2018_19': 'object',
                       'actual_performance_compared_with_previous_actual_performance_2018_19_to_2019_20': 'object',
                       'actual_performance_compared_with_previous_actual_performance_2014_15_to_2016_17_amp_so_far': 'object'})
-    validationMethods.replacespaces(df2)
+    validations.replacespaces(df2)
     mylist2 = []
     for column in df2:
         mylist2.append(column)
     for k in mylist2:
-        df2[k] = validationMethods.replacedashes(df2, k)
-        df2[k] = validationMethods.replacenullvalues(df2, k)
+        df2[k] = validations.replacedashes(df2, k)
+        df2[k] = validations.replacenullvalues(df2, k)
         if k in ['actual_performance_level_pcs_submeasures_pcl_met_2015_16',
                  'actual_performance_level_pcs_submeasures_pcl_met_2016_17',
                  'actual_performance_level_pcs_submeasures_pcl_met_2017_18',
                  'actual_performance_level_pcs_submeasures_pcl_met_2018_19',
                  'actual_performance_level_pcs_submeasures_pcl_met_2019_20',
                  'actual_performance_level_pcs_submeasures_pcl_met_estimate_2019_20']:
-            df2[k] = validationMethods.replaceyeswithtrues(df2, k)
+            df2[k] = validations.replaceyeswithtrues(df2, k)
 
-    dbutils.configfilereading()
-    conn = dbutils.sqlserverconnection()
+    conn = dbUtils.sqlserverconnection()
+    schemanameused = dbUtils.schemacreation()
     cursor = conn.cursor()
-    schemanameused = dbutils.schemacreation()
 
     # Query for PR14 data upload
     cursor.execute(
         "SELECT * FROM information_schema.tables where table_schema ='" + schemanameused + "' and table_name = 'PR14FinalCSVcreatedbyPython'")
     queryforsubmeasuretablecheck = cursor.fetchone()
     if queryforsubmeasuretablecheck == None:
+        print("Creating PR14FinalCSVcreatedbyPython table")
         cursor.execute(
             'CREATE TABLE ' + schemanameused + '.PR14FinalCSVcreatedbyPython(unique_id nvarchar(max),company_type nvarchar(max),company nvarchar(max),element_name nvarchar(max),element_acronym nvarchar(max),outcome nvarchar(max),pc_ref nvarchar(max),annex nvarchar(max),performance_commitment nvarchar(max),odi_type nvarchar(max),odi_form nvarchar(max),in_period_odi nvarchar(max),vanilla_odi nvarchar(max),primary_category nvarchar(max),pc_unit nvarchar(max),pc_unit_description nvarchar(max),decimal_places nvarchar(max),direction_of_improving_performance nvarchar(max),starting_level_pr14_fd_2014_15 nvarchar(max),pcl_2015_16 nvarchar(max),pcl_2016_17 nvarchar(max),pcl_2017_18 nvarchar(max),pcl_2018_19 nvarchar(max),pcl_2019_20 nvarchar(max),drinking_water_quality_compliance nvarchar(max),water_quality_contacts nvarchar(max),supply_interruptions_3_hours nvarchar(max),pollution_incidents_cat_3 nvarchar(max),internal_sewer_flooding nvarchar(max),scheme_specific_factor nvarchar(max),asset_health nvarchar(max),nep nvarchar(max),aim nvarchar(max),no_of_sub_measures int,financial_odi_2015_16 nvarchar(max),financial_odi_2016_17 nvarchar(max),financial_odi_2017_18 nvarchar(max),financial_odi_2018_19 nvarchar(max),financial_odi_2019_20 nvarchar(max),underp_payment_collar_2015_16 nvarchar(max),underp_payment_collar_2016_17 nvarchar(max),underp_payment_collar_2017_18 nvarchar(max),underp_payment_collar_2018_19 nvarchar(max),underp_payment_collar_2019_20 nvarchar(max),underp_payment_deadband_2015_16 nvarchar(max),underp_payment_deadband_2016_17 nvarchar(max),underp_payment_deadband_2017_18 nvarchar(max),underp_payment_deadband_2018_19 nvarchar(max),underp_payment_deadband_2019_20 nvarchar(max),outp_payment_deadband_2015_16 nvarchar(max),outp_payment_deadband_2016_17 nvarchar(max),outp_payment_deadband_2017_18 nvarchar(max),outp_payment_deadband_2018_19 nvarchar(max),outp_payment_deadband_2019_20 nvarchar(max),outp_payment_cap_2015_16 nvarchar(max),outp_payment_cap_2016_17 nvarchar(max),outp_payment_cap_2017_18 nvarchar(max),outp_payment_cap_2018_19 nvarchar(max),outp_payment_cap_2019_20 nvarchar(max),underp_payment1_incentive_rate_gbpm nvarchar(max),underp_payment2_incentive_rate_gbpm nvarchar(max),underp_payment3_incentive_rate_gbpm nvarchar(max),underp_payment4_incentive_rate_gbpm nvarchar(max),outp_payment1_incentive_rate_gbpm nvarchar(max),outp_payment2_incentive_rate_gbpm nvarchar(max),standard_odi_operand float,standard_odi_operand_note nvarchar(max),performance_level_actual_2014_15 nvarchar(max),performance_level_actual_2015_16 nvarchar(max),pcl_met_2015_16 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_2015_16 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_gbpm_2015_16 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2016_2015_16 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2016_gbpm_2015_16 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2015_16 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2015_16 nvarchar(max),performance_level_actual_2016_17 nvarchar(max),pcl_met_2016_17 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_2016_17 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_gbpm_2016_17 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2017_2016_17 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2017_gbpm_2016_17 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2016_17 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2016_17 nvarchar(max),performance_level_actual_2017_18 nvarchar(max),pcl_met_2017_18 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_2017_18 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_gbpm_2017_18 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2018_2017_18 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2018_gbpm_2017_18 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2017_18 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2017_18 nvarchar(max),performance_level_actual_2018_19 nvarchar(max),pcl_met_2018_19 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_2018_19 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_gbpm_2018_19 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2019_2018_19 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2019_gbpm_2018_19 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2018_19 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2018_19 nvarchar(max),performance_level_actual_2019_20 nvarchar(max),pcl_met_2019_20 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_2019_20 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_gbpm_2019_20 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_2019_20 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_gbpm_2019_20 nvarchar(max),performance_level_actual_estimates_2019_20 nvarchar(max),pcl_met_estimates_2019_20 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_estimates_2019_20 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_gbpm_estimates_2019_20 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_estimates_2019_20 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_gbpm_estimates_2019_20 nvarchar(max),price_control_allocation_water_resources float,price_control_allocation_water_network_plus float,price_control_allocation_wastewater_network_plus float,price_control_allocation_bioresources_sludge float,price_control_allocation_residential_retail float,price_control_allocation_business_retail float,price_control_allocation_direct_procurement_for_customers float,price_control_allocation_dummy_control float,isnumeric_underp_payment1_incentive_rate_gbpm BIT, isnumeric_underp_payment2_incentive_rate_gbpm BIT,isnumeric_underp_payment3_incentive_rate_gbpm BIT, isnumeric_underp_payment4_incentive_rate_gbpm BIT,isnumeric_outp_payment1_incentive_rate_gbpm BIT, isnumeric_outp_payment2_incentive_rate_gbpm BIT,onlynumeric_underp_payment1_incentive_rate_gbpm float, onlynumeric_underp_payment2_incentive_rate_gbpm float,onlynumeric_underp_payment3_incentive_rate_gbpm float, onlynumeric_underp_payment4_incentive_rate_gbpm float,onlynumeric_outp_payment1_incentive_rate_gbpm float, onlynumeric_outp_payment2_incentive_rate_gbpm float)')
         for row in df.itertuples():
@@ -531,6 +531,7 @@ def upload_data():
         "SELECT * FROM information_schema.tables where table_schema ='" + schemanameused + "' and table_name = 'PR19FinalCSVcreatedbyPython'")
     queryforsubmeasuretablecheck = cursor.fetchone()
     if queryforsubmeasuretablecheck == None:
+        print("Creating PR19FinalCSVcreatedbyPython table")
         cursor.execute(
             'CREATE TABLE ' + schemanameused + '.PR19FinalCSVcreatedbyPython (company nvarchar(max),unique_id nvarchar(max),outcome nvarchar(max),pc_ref nvarchar(max),performance_commitment nvarchar(max),pc_short_description nvarchar(max),price_control_allocation_water_resources float,price_control_allocation_water_network_plus float,price_control_allocation_wastewater_network_plus float,price_control_allocation_bioresources_sludge float,price_control_allocation_residential_retail float,price_control_allocation_business_retail float,price_control_allocation_direct_procurement_for_customers float,price_control_allocation_dummy_control float,odi_type nvarchar(max),odi_form nvarchar(max),odi_timing nvarchar(max),primary_category nvarchar(max),pc_unit nvarchar(max),pc_unit_description nvarchar(max),decimal_places nvarchar(max),direction_of_improving_performance nvarchar(max),common_and_comparable_bespoke_performance_commitment nvarchar(max),special_cost_factor nvarchar(max),scheme_specific_factor nvarchar(max),asset_health nvarchar(max),nep nvarchar(max),aim nvarchar(max),customers_relative_priority nvarchar(max),pcl_2020_21 nvarchar(max),pcl_2021_22 nvarchar(max),pcl_2022_23 nvarchar(max),pcl_2023_24 nvarchar(max),pcl_2024_25 nvarchar(max),financial_odi_2020_21 nvarchar(max),financial_odi_2021_22 nvarchar(max),financial_odi_2022_23 nvarchar(max),financial_odi_2023_24 nvarchar(max),financial_odi_2024_25 nvarchar(max),enhanced_underp_payment_collar_2020_21 nvarchar(max),enhanced_underp_payment_collar_2021_22 nvarchar(max),enhanced_underp_payment_collar_2022_23 nvarchar(max),enhanced_underp_payment_collar_2023_24 nvarchar(max),enhanced_underp_payment_collar_2024_25 nvarchar(max),standard_underp_payment_collar_2020_21 nvarchar(max),standard_underp_payment_collar_2021_22 nvarchar(max),standard_underp_payment_collar_2022_23 nvarchar(max),standard_underp_payment_collar_2023_24 nvarchar(max),standard_underp_payment_collar_2024_25 nvarchar(max),underp_payment_deadband_2020_21 nvarchar(max),underp_payment_deadband_2021_22 nvarchar(max),underp_payment_deadband_2022_23 nvarchar(max),underp_payment_deadband_2023_24 nvarchar(max),underp_payment_deadband_2024_25 nvarchar(max),outp_payment_deadband_2020_21 nvarchar(max),outp_payment_deadband_2021_22 nvarchar(max),outp_payment_deadband_2022_23 nvarchar(max),outp_payment_deadband_2023_24 nvarchar(max),outp_payment_deadband_2024_25 nvarchar(max),standard_outp_payment_cap_2020_21 nvarchar(max),standard_outp_payment_cap_2021_22 nvarchar(max),standard_outp_payment_cap_2022_23 nvarchar(max),standard_outp_payment_cap_2023_24 nvarchar(max),standard_outp_payment_cap_2024_25 nvarchar(max),enhanced_outp_payment_cap_2020_21 nvarchar(max),enhanced_outp_payment_cap_2021_22 nvarchar(max),enhanced_outp_payment_cap_2022_23 nvarchar(max),enhanced_outp_payment_cap_2023_24 nvarchar(max),enhanced_outp_payment_cap_2024_25 nvarchar(max),underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply nvarchar(max),underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply nvarchar(max),underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply nvarchar(max),underp_payment_incentive_enhanced_underp_payment nvarchar(max),outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply nvarchar(max),outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply nvarchar(max),outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply nvarchar(max),outp_payment_incentive_enhanced_outp_payment nvarchar(max),standard_odi_cal nvarchar(max),standard_odi_operand float,standard_odi_operand_note nvarchar(max),isnumeric_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply BIT,onlynumeric_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply float,isnumeric_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply BIT,onlynumeric_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply float,isnumeric_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply BIT,onlynumeric_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply float,isnumeric_underp_payment_incentive_enhanced_underp_payment BIT,onlynumeric_underp_payment_incentive_enhanced_underp_payment float,isnumeric_outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply BIT,onlynumeric_outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply float,isnumeric_outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply BIT,onlynumeric_outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply float,isnumeric_outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply BIT,onlynumeric_outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply float,isnumeric_outp_payment_incentive_enhanced_outp_payment BIT,onlynumeric_outp_payment_incentive_enhanced_outp_payment float)')
         for row in df1.itertuples():
@@ -643,6 +644,7 @@ def upload_data():
         "SELECT * FROM information_schema.tables where table_schema ='" + schemanameused + "' and table_name = 'PR14SubmeasureFinalCSVcreatedbyPython'")
     queryforsubmeasuretablecheck = cursor.fetchone()
     if queryforsubmeasuretablecheck == None:
+        print("Creating PR14SubmeasureFinalCSVcreatedbyPython table")
         cursor.execute(
             'CREATE TABLE ' + schemanameused + '.PR14SubmeasureFinalCSVcreatedbyPython(unique_id nvarchar(max),company_type nvarchar(max),company nvarchar(max),element_acronym nvarchar(max),pc_ref nvarchar(max),performance_commitment nvarchar(max),odi_type nvarchar(max),primary_category nvarchar(max),pc_unit_description nvarchar(max),starting_level_pr14_fd_2014_15 nvarchar(max),pcl_2015_16 nvarchar(max),pcl_2016_17 nvarchar(max),pcl_2017_18 nvarchar(max),pcl_2018_19 nvarchar(max),pcl_2019_20 nvarchar(max),sub_measure_id nvarchar(max),sub_measure nvarchar(max),sub_measure_category nvarchar(max),sub_measure_weighting nvarchar(max),pc_unit nvarchar(max),decimal_places nvarchar(max),submeasure_performace_level_reference_regulatory_output_during_2010_15 nvarchar(max),submeasure_performace_level_reference_expected_performance_by_2014_15 nvarchar(max),submeasure_performace_level_2015_16 nvarchar(max),submeasure_performace_level_2016_17 nvarchar(max),submeasure_performace_level_2017_18 nvarchar(max),submeasure_performace_level_2018_19 nvarchar(max),submeasure_performace_level_2019_20 nvarchar(max),submeasure_high_reference_regulatory_output_during_2010_15 nvarchar(max),submeasure_high_reference_expected_performance_by_2014_15 nvarchar(max),submeasure_high_2015_16 nvarchar(max),submeasure_high_2016_17 nvarchar(max),submeasure_high_2017_18 nvarchar(max),submeasure_high_2018_19 nvarchar(max),submeasure_high_2019_20 nvarchar(max),submeasure_low_reference_regulatory_output_during_2010_15 float,submeasure_low_reference_expected_performance_by_2014_15 float,submeasure_low_2015_16 nvarchar(max),submeasure_low_2016_17 nvarchar(max),submeasure_low_2017_18 nvarchar(max),submeasure_low_2018_19 nvarchar(max),submeasure_low_2019_20 nvarchar(max),failure_threshold_for_AMP6 nvarchar(max),actual_performance_level_pcs_submeasures_actual_2014_15 nvarchar(max),actual_performance_level_pcs_submeasures_actual_2015_16 nvarchar(max),actual_performance_level_pcs_submeasures_pcl_met_2015_16 nvarchar(max),actual_performance_level_pcs_submeasures_actual_2016_17 nvarchar(max),actual_performance_level_pcs_submeasures_pcl_met_2016_17 nvarchar(max),actual_performance_level_pcs_submeasures_actual_2017_18 nvarchar(max),actual_performance_level_pcs_submeasures_pcl_met_2017_18 nvarchar(max),actual_performance_level_pcs_submeasures_actual_2018_19 nvarchar(max),actual_performance_level_pcs_submeasures_pcl_met_2018_19 nvarchar(max),actual_performance_level_pcs_submeasures_actual_2019_20 nvarchar(max),actual_performance_level_pcs_submeasures_pcl_met_2019_20 nvarchar(max),actual_performance_level_pcs_submeasures_actual_estimate_2019_20 nvarchar(max),actual_performance_level_pcs_submeasures_pcl_met_estimate_2019_20 nvarchar(max),direction_of_improving_performance nvarchar(max),comms_filter nvarchar(max),actual_performance_compared_with_previous_actual_performance_2014_15_to_2015_16 nvarchar(max),actual_performance_compared_with_previous_actual_performance_2015_16_to_2016_17 nvarchar(max),actual_performance_compared_with_previous_actual_performance_2016_17_to_2017_18 nvarchar(max),actual_performance_compared_with_previous_actual_performance_2017_18_to_2018_19 nvarchar(max),actual_performance_compared_with_previous_actual_performance_2018_19_to_2019_20 nvarchar(max),actual_performance_compared_with_previous_actual_performance_2014_15_to_2016_17_amp_so_far nvarchar(max))')
         for row in df2.itertuples():
