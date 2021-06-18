@@ -162,6 +162,8 @@ def upload_data():
                  'underp_payment3_incentive_rate_gbpm', 'underp_payment4_incentive_rate_gbpm',
                  'outp_payment1_incentive_rate_gbpm', 'outp_payment2_incentive_rate_gbpm']:
             validations.isnumericandonlynumeric(df, i)
+        if i == 'company':
+            df[i] = validations.changecompanytoUUW(df)
 
     # Read excel for PR19 and create csv with columns needed
     df1 = pd.read_excel(r'../resources/Pauls_latest_PR19.xlsx',
@@ -368,6 +370,8 @@ def upload_data():
                  'actual_performance_level_pcs_submeasures_pcl_met_2019_20',
                  'actual_performance_level_pcs_submeasures_pcl_met_estimate_2019_20']:
             df2[k] = validations.replaceyeswithtrues(df2, k)
+        if k == 'company':
+            df2[k] = validations.changecompanytoUUW(df2)
 
     conn = dbUtils.sqlserverconnection()
     schemanameused = dbUtils.schemacreation()

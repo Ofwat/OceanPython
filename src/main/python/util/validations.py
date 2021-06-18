@@ -30,3 +30,8 @@ def isnumericandonlynumeric(dataframe, iteratorvariable):
     na_mask = dataframe['onlynumeric_' + iteratorvariable].notnull()
     dataframe.loc[na_mask, 'onlynumeric_' + iteratorvariable] = dataframe.loc[
         na_mask, 'onlynumeric_' + iteratorvariable].astype(float).round(18)
+
+
+def changecompanytoUUW(dataframe):
+    dataframe['company'] = np.where((dataframe.company == 'UU'), 'UUW', dataframe.company)
+    return dataframe['company']
