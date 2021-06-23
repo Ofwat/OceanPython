@@ -14,8 +14,10 @@ def upload_data():
                   'performance_commitment', 'odi_type', 'odi_form', 'in_period_odi', 'vanilla_odi', 'primary_category',
                   'pc_unit', 'pc_unit_description', 'decimal_places', 'direction_of_improving_performance',
                   'starting_level_pr14_fd_2014_15', 'pcl_2015_16', 'pcl_2016_17', 'pcl_2017_18', 'pcl_2018_19',
-                  'pcl_2019_20', 'drinking_water_quality_compliance', 'water_quality_contacts',
-                  'supply_interruptions_3_hours', 'pollution_incidents_cat_3', 'internal_sewer_flooding',
+                  'pcl_2019_20', 'PR14_comparative_drinking_water_compliance',
+                  'PR14_comparative_water_quality_contacts',
+                  'PR14_comparative_supply_interruptions_3_hours', 'PR14_comparative_pollution_incidents_cat_3',
+                  'PR14_comparative_internal_sewer_flooding',
                   'scheme_specific_factor', 'asset_health', 'nep', 'aim', 'no_of_sub_measures', 'financial_odi_2015_16',
                   'financial_odi_2016_17', 'financial_odi_2017_18', 'financial_odi_2018_19', 'financial_odi_2019_20',
                   'underp_payment_collar_2015_16', 'underp_payment_collar_2016_17', 'underp_payment_collar_2017_18',
@@ -25,10 +27,10 @@ def upload_data():
                   'underp_payment_deadband_2019_20', 'outp_payment_deadband_2015_16', 'outp_payment_deadband_2016_17',
                   'outp_payment_deadband_2017_18', 'outp_payment_deadband_2018_19', 'outp_payment_deadband_2019_20',
                   'outp_payment_cap_2015_16', 'outp_payment_cap_2016_17', 'outp_payment_cap_2017_18',
-                  'outp_payment_cap_2018_19', 'outp_payment_cap_2019_20', 'underp_payment1_incentive_rate_gbpm',
-                  'underp_payment2_incentive_rate_gbpm', 'underp_payment3_incentive_rate_gbpm',
-                  'underp_payment4_incentive_rate_gbpm', 'outp_payment1_incentive_rate_gbpm',
-                  'outp_payment2_incentive_rate_gbpm', 'standard_odi_operand', 'standard_odi_operand_note',
+                  'outp_payment_cap_2018_19', 'outp_payment_cap_2019_20', 'underp_payment1_incentive_rate_gbpm_column',
+                  'underp_payment2_incentive_rate_gbpm_column', 'underp_payment3_incentive_rate_gbpm_column',
+                  'underp_payment4_incentive_rate_gbpm_column', 'outp_payment1_incentive_rate_gbpm_column',
+                  'outp_payment2_incentive_rate_gbpm_column', 'standard_odi_operand', 'standard_odi_operand_note',
                   'performance_level_actual_2014_15', 'performance_level_actual_2015_16', 'pcl_met_2015_16',
                   'outp_payment_or_underp_payment_in_period_odis_2015_16',
                   'outp_payment_or_underp_payment_in_period_odis_gbpm_2015_16',
@@ -79,9 +81,11 @@ def upload_data():
                     'pc_unit_description': 'object', 'decimal_places': 'object',
                     'direction_of_improving_performance': 'object', 'starting_level_pr14_fd_2014_15': 'object',
                     'pcl_2015_16': 'object', 'pcl_2016_17': 'object', 'pcl_2017_18': 'object', 'pcl_2018_19': 'object',
-                    'pcl_2019_20': 'object', 'drinking_water_quality_compliance': 'object',
-                    'water_quality_contacts': 'object', 'supply_interruptions_3_hours': 'object',
-                    'pollution_incidents_cat_3': 'object', 'internal_sewer_flooding': 'object',
+                    'pcl_2019_20': 'object', 'PR14_comparative_drinking_water_compliance': 'object',
+                    'PR14_comparative_water_quality_contacts': 'object',
+                    'PR14_comparative_supply_interruptions_3_hours': 'object',
+                    'PR14_comparative_pollution_incidents_cat_3': 'object',
+                    'PR14_comparative_internal_sewer_flooding': 'object',
                     'scheme_specific_factor': 'object', 'asset_health': 'object', 'nep': 'object', 'aim': 'object',
                     'no_of_sub_measures': 'int64', 'financial_odi_2015_16': 'object', 'financial_odi_2016_17': 'object',
                     'financial_odi_2017_18': 'object', 'financial_odi_2018_19': 'object',
@@ -96,9 +100,12 @@ def upload_data():
                     'outp_payment_deadband_2019_20': 'object', 'outp_payment_cap_2015_16': 'object',
                     'outp_payment_cap_2016_17': 'object', 'outp_payment_cap_2017_18': 'object',
                     'outp_payment_cap_2018_19': 'object', 'outp_payment_cap_2019_20': 'object',
-                    'underp_payment1_incentive_rate_gbpm': 'object', 'underp_payment2_incentive_rate_gbpm': 'object',
-                    'underp_payment3_incentive_rate_gbpm': 'object', 'underp_payment4_incentive_rate_gbpm': 'object',
-                    'outp_payment1_incentive_rate_gbpm': 'object', 'outp_payment2_incentive_rate_gbpm': 'object',
+                    'underp_payment1_incentive_rate_gbpm_column': 'object',
+                    'underp_payment2_incentive_rate_gbpm_column': 'object',
+                    'underp_payment3_incentive_rate_gbpm_column': 'object',
+                    'underp_payment4_incentive_rate_gbpm_column': 'object',
+                    'outp_payment1_incentive_rate_gbpm_column': 'object',
+                    'outp_payment2_incentive_rate_gbpm_column': 'object',
                     'standard_odi_operand': 'float64', 'standard_odi_operand_note': 'object',
                     'performance_level_actual_2014_15': 'object', 'performance_level_actual_2015_16': 'object',
                     'pcl_met_2015_16': 'object', 'outp_payment_or_underp_payment_in_period_odis_2015_16': 'object',
@@ -147,28 +154,47 @@ def upload_data():
                     'price_control_allocation_direct_procurement_for_customers': 'float64',
                     'price_control_allocation_dummy_control': 'float64'})
     validations.replacespaces(df)
-    mylist = []
+    listofPR14columns = []
     for column in df:
-        mylist.append(column)
-    for i in mylist:
+        listofPR14columns.append(column)
+    for i in listofPR14columns:
         df[i] = validations.replacedashes(df, i)
         df[i] = validations.replacenullvalues(df, i)
-        if i in ['drinking_water_quality_compliance', 'water_quality_contacts', 'supply_interruptions_3_hours',
-                 'pollution_incidents_cat_3', 'internal_sewer_flooding', 'scheme_specific_factor', 'asset_health',
+        if i in ['PR14_comparative_drinking_water_compliance', 'PR14_comparative_water_quality_contacts',
+                 'PR14_comparative_supply_interruptions_3_hours',
+                 'PR14_comparative_pollution_incidents_cat_3', 'PR14_comparative_internal_sewer_flooding',
+                 'scheme_specific_factor', 'asset_health',
                  'nep',
                  'aim']:
             df[i] = validations.replaceyeswithtrues(df, i)
-        if i in ['underp_payment1_incentive_rate_gbpm', 'underp_payment2_incentive_rate_gbpm',
-                 'underp_payment3_incentive_rate_gbpm', 'underp_payment4_incentive_rate_gbpm',
-                 'outp_payment1_incentive_rate_gbpm', 'outp_payment2_incentive_rate_gbpm']:
+        if i in ['underp_payment1_incentive_rate_gbpm_column', 'underp_payment2_incentive_rate_gbpm_column',
+                 'underp_payment3_incentive_rate_gbpm_column', 'underp_payment4_incentive_rate_gbpm_column',
+                 'outp_payment1_incentive_rate_gbpm_column', 'outp_payment2_incentive_rate_gbpm_column']:
             validations.isnumericandonlynumeric(df, i)
+
         if i == 'company':
             df[i] = validations.changecompanytoUUW(df)
+    df = df.rename(
+        columns={'onlynumeric_underp_payment1_incentive_rate_gbpm_column': 'underp_payment1_incentive_rate_gbpm',
+                 'onlynumeric_underp_payment2_incentive_rate_gbpm_column': 'underp_payment2_incentive_rate_gbpm',
+                 'onlynumeric_underp_payment3_incentive_rate_gbpm_column': 'underp_payment3_incentive_rate_gbpm',
+                 'onlynumeric_underp_payment4_incentive_rate_gbpm_column': 'underp_payment4_incentive_rate_gbpm',
+                 'onlynumeric_outp_payment1_incentive_rate_gbpm_column': 'outp_payment1_incentive_rate_gbpm',
+                 'onlynumeric_outp_payment2_incentive_rate_gbpm_column': 'outp_payment2_incentive_rate_gbpm',
+                 'notes_underp_payment1_incentive_rate_gbpm_column': 'notes_underp_payment1_incentive_rate_gbpm',
+                 'notes_underp_payment2_incentive_rate_gbpm_column': 'notes_underp_payment2_incentive_rate_gbpm',
+                 'notes_underp_payment3_incentive_rate_gbpm_column': 'notes_underp_payment3_incentive_rate_gbpm',
+                 'notes_underp_payment4_incentive_rate_gbpm_column': 'notes_underp_payment4_incentive_rate_gbpm',
+                 'notes_outp_payment1_incentive_rate_gbpm_column': 'notes_outp_payment1_incentive_rate_gbpm',
+                 'notes_outp_payment2_incentive_rate_gbpm_column': 'notes_outp_payment2_incentive_rate_gbpm',
+                 })
+    df.drop(columns = ['isnumeric_underp_payment1_incentive_rate_gbpm_column', 'isnumeric_underp_payment2_incentive_rate_gbpm_column',
+         'isnumeric_underp_payment3_incentive_rate_gbpm_column', 'isnumeric_underp_payment4_incentive_rate_gbpm_column',
+         'isnumeric_outp_payment1_incentive_rate_gbpm_column', 'isnumeric_outp_payment2_incentive_rate_gbpm_column'],axis=1,inplace=True)
 
     # Read excel for PR19 and create csv with columns needed
     df1 = pd.read_excel(r'../resources/Pauls_latest_PR19.xlsx',
-                        sheet_name='App1', usecols="A,C:D,F:P,R:Z,AF,AQ:AU,BL:DE",
-                        skiprows=[0, 1, 2, 3, 4])
+                        sheet_name='App1', usecols="A,C:D,F:P,R:Z,AF,AQ:AU,BL:DE", skiprows=[0, 1, 2, 3, 4])
     df1.columns = ['company', 'unique_id', 'outcome', 'pc_ref', 'performance_commitment', 'pc_short_description',
                    'price_control_allocation_water_resources', 'price_control_allocation_water_network_plus',
                    'price_control_allocation_wastewater_network_plus', 'price_control_allocation_bioresources_sludge',
@@ -177,7 +203,8 @@ def upload_data():
                    'price_control_allocation_dummy_control',
                    'odi_type', 'odi_form', 'odi_timing', 'primary_category', 'pc_unit', 'pc_unit_description',
                    'decimal_places', 'direction_of_improving_performance',
-                   'common_and_comparable_bespoke_performance_commitment', 'customers_relative_priority', 'pcl_2020_21', 'pcl_2021_22',
+                   'common_and_comparable_bespoke_performance_commitment', 'customers_relative_priority', 'pcl_2020_21',
+                   'pcl_2021_22',
                    'pcl_2022_23',
                    'pcl_2023_24', 'pcl_2024_25', 'financial_odi_2020_21', 'financial_odi_2021_22',
                    'financial_odi_2022_23',
@@ -196,14 +223,14 @@ def upload_data():
                    'standard_outp_payment_cap_2024_25', 'enhanced_outp_payment_cap_2020_21',
                    'enhanced_outp_payment_cap_2021_22', 'enhanced_outp_payment_cap_2022_23',
                    'enhanced_outp_payment_cap_2023_24', 'enhanced_outp_payment_cap_2024_25',
-                   'underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply',
-                   'underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply',
-                   'underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply',
-                   'underp_payment_incentive_enhanced_underp_payment',
-                   'outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply',
-                   'outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply',
-                   'outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply',
-                   'outp_payment_incentive_enhanced_outp_payment', 'standard_odi_cal', 'standard_odi_operand',
+                   'underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply_column',
+                   'underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply_column',
+                   'underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply_column',
+                   'underp_payment_incentive_enhanced_underp_payment_column',
+                   'outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply_column',
+                   'outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply_column',
+                   'outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply_column',
+                   'outp_payment_incentive_enhanced_outp_payment_column', 'standard_odi_cal', 'standard_odi_operand',
                    'standard_odi_operand_note']
     df1 = df1.astype({'company': 'object', 'unique_id': 'object', 'outcome': 'object', 'pc_ref': 'object',
                       'performance_commitment': 'object', 'pc_short_description': 'object',
@@ -245,34 +272,60 @@ def upload_data():
                       'standard_outp_payment_cap_2024_25': 'object', 'enhanced_outp_payment_cap_2020_21': 'object',
                       'enhanced_outp_payment_cap_2021_22': 'object', 'enhanced_outp_payment_cap_2022_23': 'object',
                       'enhanced_outp_payment_cap_2023_24': 'object', 'enhanced_outp_payment_cap_2024_25': 'object',
-                      'underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply': 'object',
-                      'underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply': 'object',
-                      'underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply': 'object',
-                      'underp_payment_incentive_enhanced_underp_payment': 'object',
-                      'outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply': 'object',
-                      'outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply': 'object',
-                      'outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply': 'object',
-                      'outp_payment_incentive_enhanced_outp_payment': 'object', 'standard_odi_cal': 'object',
+                      'underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply_column': 'object',
+                      'underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply_column': 'object',
+                      'underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply_column': 'object',
+                      'underp_payment_incentive_enhanced_underp_payment_column': 'object',
+                      'outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply_column': 'object',
+                      'outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply_column': 'object',
+                      'outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply_column': 'object',
+                      'outp_payment_incentive_enhanced_outp_payment_column': 'object', 'standard_odi_cal': 'object',
                       'standard_odi_operand': 'object',
                       'standard_odi_operand_note': 'object'})
     validations.replacespaces(df1)
-    mylist1 = []
+    listofPR19columns = []
     for column in df1:
-        mylist1.append(column)
-    for j in mylist1:
+        listofPR19columns.append(column)
+    for j in listofPR19columns:
         df1[j] = validations.replacedashes(df1, j)
         df1[j] = validations.replacenullvalues(df1, j)
         if j in ['scheme_specific_factor', 'asset_health', 'nep', 'aim']:
             df1[j] = validations.replaceyeswithtrues(df1, j)
-        if j in ['underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply',
-                 'underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply',
-                 'underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply',
-                 'underp_payment_incentive_enhanced_underp_payment',
-                 'outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply',
-                 'outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply',
-                 'outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply',
-                 'outp_payment_incentive_enhanced_outp_payment']:
+        if j in ['underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply_column',
+                 'underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply_column',
+                 'underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply_column',
+                 'underp_payment_incentive_enhanced_underp_payment_column',
+                 'outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply_column',
+                 'outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply_column',
+                 'outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply_column',
+                 'outp_payment_incentive_enhanced_outp_payment_column']:
             validations.isnumericandonlynumeric(df1, j)
+    df1 = df1.rename(columns={
+        'onlynumeric_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply_column': 'underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply',
+        'onlynumeric_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply_column': 'underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply',
+        'onlynumeric_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply_column': 'underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply',
+        'onlynumeric_underp_payment_incentive_enhanced_underp_payment_column': 'underp_payment_incentive_enhanced_underp_payment',
+        'onlynumeric_outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply_column': 'outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply',
+        'onlynumeric_outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply_column': 'outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply',
+        'onlynumeric_outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply_column': 'outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply',
+        'onlynumeric_outp_payment_incentive_enhanced_outp_payment_column': 'outp_payment_incentive_enhanced_outp_payment',
+        'notes_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply_column': 'notes_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply',
+        'notes_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply_column': 'notes_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply',                                                                                                                                                                 'onlynumeric_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply_column': 'underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply',
+        'notes_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply_column': 'notes_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply',
+        'notes_underp_payment_incentive_enhanced_underp_payment_column': 'notes_underp_payment_incentive_enhanced_underp_payment',
+        'notes_outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply_column': 'notes_outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply',
+        'notes_outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply_column': 'notes_outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply',
+        'notes_outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply_column': 'notes_outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply',
+        'notes_outp_payment_incentive_enhanced_outp_payment_column': 'notes_outp_payment_incentive_enhanced_outp_payment'})
+    df1.drop(columns = ['isnumeric_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply_column',
+                    'isnumeric_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply_column',
+                    'isnumeric_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply_column',
+                    'isnumeric_underp_payment_incentive_enhanced_underp_payment_column',
+                    'isnumeric_outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply_column',
+                    'isnumeric_outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply_column',
+                    'isnumeric_outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply_column',
+                    'isnumeric_outp_payment_incentive_enhanced_outp_payment_column'],axis=1,inplace=True)
+    # df1 = df1.to_csv('../resources/xcv2.csv', index=False)
 
     # Read excel for PR14 Submeasures
     df2 = pd.read_excel(r'../resources/AnnesPR14.xlsx',
@@ -357,10 +410,10 @@ def upload_data():
                       'actual_performance_compared_with_previous_actual_performance_2018_19_to_2019_20': 'object',
                       'actual_performance_compared_with_previous_actual_performance_2014_15_to_2016_17_amp_so_far': 'object'})
     validations.replacespaces(df2)
-    mylist2 = []
+    listofsubmeasurecolumns = []
     for column in df2:
-        mylist2.append(column)
-    for k in mylist2:
+        listofsubmeasurecolumns.append(column)
+    for k in listofsubmeasurecolumns:
         df2[k] = validations.replacedashes(df2, k)
         df2[k] = validations.replacenullvalues(df2, k)
         if k in ['actual_performance_level_pcs_submeasures_pcl_met_2015_16',
@@ -381,14 +434,14 @@ def upload_data():
     cursor.execute(
         "SELECT * FROM information_schema.tables where table_schema ='" + schemanameused + "' and table_name = 'PR14FinalCSVcreatedbyPython'")
     queryforsubmeasuretablecheck = cursor.fetchone()
-    if queryforsubmeasuretablecheck == None:
+    if queryforsubmeasuretablecheck is None:
         print("Creating PR14FinalCSVcreatedbyPython table")
         cursor.execute(
-            'CREATE TABLE ' + schemanameused + '.PR14FinalCSVcreatedbyPython(unique_id nvarchar(max),company_type nvarchar(max),company nvarchar(max),element_name nvarchar(max),element_acronym nvarchar(max),outcome nvarchar(max),pc_ref nvarchar(max),annex nvarchar(max),performance_commitment nvarchar(max),odi_type nvarchar(max),odi_form nvarchar(max),in_period_odi nvarchar(max),vanilla_odi nvarchar(max),primary_category nvarchar(max),pc_unit nvarchar(max),pc_unit_description nvarchar(max),decimal_places nvarchar(max),direction_of_improving_performance nvarchar(max),starting_level_pr14_fd_2014_15 nvarchar(max),pcl_2015_16 nvarchar(max),pcl_2016_17 nvarchar(max),pcl_2017_18 nvarchar(max),pcl_2018_19 nvarchar(max),pcl_2019_20 nvarchar(max),drinking_water_quality_compliance nvarchar(max),water_quality_contacts nvarchar(max),supply_interruptions_3_hours nvarchar(max),pollution_incidents_cat_3 nvarchar(max),internal_sewer_flooding nvarchar(max),scheme_specific_factor nvarchar(max),asset_health nvarchar(max),nep nvarchar(max),aim nvarchar(max),no_of_sub_measures int,financial_odi_2015_16 nvarchar(max),financial_odi_2016_17 nvarchar(max),financial_odi_2017_18 nvarchar(max),financial_odi_2018_19 nvarchar(max),financial_odi_2019_20 nvarchar(max),underp_payment_collar_2015_16 nvarchar(max),underp_payment_collar_2016_17 nvarchar(max),underp_payment_collar_2017_18 nvarchar(max),underp_payment_collar_2018_19 nvarchar(max),underp_payment_collar_2019_20 nvarchar(max),underp_payment_deadband_2015_16 nvarchar(max),underp_payment_deadband_2016_17 nvarchar(max),underp_payment_deadband_2017_18 nvarchar(max),underp_payment_deadband_2018_19 nvarchar(max),underp_payment_deadband_2019_20 nvarchar(max),outp_payment_deadband_2015_16 nvarchar(max),outp_payment_deadband_2016_17 nvarchar(max),outp_payment_deadband_2017_18 nvarchar(max),outp_payment_deadband_2018_19 nvarchar(max),outp_payment_deadband_2019_20 nvarchar(max),outp_payment_cap_2015_16 nvarchar(max),outp_payment_cap_2016_17 nvarchar(max),outp_payment_cap_2017_18 nvarchar(max),outp_payment_cap_2018_19 nvarchar(max),outp_payment_cap_2019_20 nvarchar(max),underp_payment1_incentive_rate_gbpm nvarchar(max),underp_payment2_incentive_rate_gbpm nvarchar(max),underp_payment3_incentive_rate_gbpm nvarchar(max),underp_payment4_incentive_rate_gbpm nvarchar(max),outp_payment1_incentive_rate_gbpm nvarchar(max),outp_payment2_incentive_rate_gbpm nvarchar(max),standard_odi_operand float,standard_odi_operand_note nvarchar(max),performance_level_actual_2014_15 nvarchar(max),performance_level_actual_2015_16 nvarchar(max),pcl_met_2015_16 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_2015_16 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_gbpm_2015_16 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2016_2015_16 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2016_gbpm_2015_16 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2015_16 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2015_16 nvarchar(max),performance_level_actual_2016_17 nvarchar(max),pcl_met_2016_17 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_2016_17 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_gbpm_2016_17 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2017_2016_17 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2017_gbpm_2016_17 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2016_17 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2016_17 nvarchar(max),performance_level_actual_2017_18 nvarchar(max),pcl_met_2017_18 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_2017_18 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_gbpm_2017_18 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2018_2017_18 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2018_gbpm_2017_18 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2017_18 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2017_18 nvarchar(max),performance_level_actual_2018_19 nvarchar(max),pcl_met_2018_19 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_2018_19 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_gbpm_2018_19 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2019_2018_19 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2019_gbpm_2018_19 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2018_19 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2018_19 nvarchar(max),performance_level_actual_2019_20 nvarchar(max),pcl_met_2019_20 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_2019_20 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_gbpm_2019_20 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_2019_20 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_gbpm_2019_20 nvarchar(max),performance_level_actual_estimates_2019_20 nvarchar(max),pcl_met_estimates_2019_20 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_estimates_2019_20 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_gbpm_estimates_2019_20 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_estimates_2019_20 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_gbpm_estimates_2019_20 nvarchar(max),price_control_allocation_water_resources float,price_control_allocation_water_network_plus float,price_control_allocation_wastewater_network_plus float,price_control_allocation_bioresources_sludge float,price_control_allocation_residential_retail float,price_control_allocation_business_retail float,price_control_allocation_direct_procurement_for_customers float,price_control_allocation_dummy_control float,isnumeric_underp_payment1_incentive_rate_gbpm BIT, isnumeric_underp_payment2_incentive_rate_gbpm BIT,isnumeric_underp_payment3_incentive_rate_gbpm BIT, isnumeric_underp_payment4_incentive_rate_gbpm BIT,isnumeric_outp_payment1_incentive_rate_gbpm BIT, isnumeric_outp_payment2_incentive_rate_gbpm BIT,onlynumeric_underp_payment1_incentive_rate_gbpm float, onlynumeric_underp_payment2_incentive_rate_gbpm float,onlynumeric_underp_payment3_incentive_rate_gbpm float, onlynumeric_underp_payment4_incentive_rate_gbpm float,onlynumeric_outp_payment1_incentive_rate_gbpm float, onlynumeric_outp_payment2_incentive_rate_gbpm float)')
+            'CREATE TABLE ' + schemanameused + '.PR14FinalCSVcreatedbyPython(unique_id nvarchar(max),company_type nvarchar(max),company nvarchar(max),element_name nvarchar(max),element_acronym nvarchar(max),outcome nvarchar(max),pc_ref nvarchar(max),annex nvarchar(max),performance_commitment nvarchar(max),odi_type nvarchar(max),odi_form nvarchar(max),in_period_odi nvarchar(max),vanilla_odi nvarchar(max),primary_category nvarchar(max),pc_unit nvarchar(max),pc_unit_description nvarchar(max),decimal_places nvarchar(max),direction_of_improving_performance nvarchar(max),starting_level_pr14_fd_2014_15 nvarchar(max),pcl_2015_16 nvarchar(max),pcl_2016_17 nvarchar(max),pcl_2017_18 nvarchar(max),pcl_2018_19 nvarchar(max),pcl_2019_20 nvarchar(max),PR14_comparative_drinking_water_compliance nvarchar(max),PR14_comparative_water_quality_contacts nvarchar(max),PR14_comparative_supply_interruptions_3_hours nvarchar(max),PR14_comparative_pollution_incidents_cat_3 nvarchar(max),PR14_comparative_internal_sewer_flooding nvarchar(max),scheme_specific_factor nvarchar(max),asset_health nvarchar(max),nep nvarchar(max),aim nvarchar(max),no_of_sub_measures int,financial_odi_2015_16 nvarchar(max),financial_odi_2016_17 nvarchar(max),financial_odi_2017_18 nvarchar(max),financial_odi_2018_19 nvarchar(max),financial_odi_2019_20 nvarchar(max),underp_payment_collar_2015_16 nvarchar(max),underp_payment_collar_2016_17 nvarchar(max),underp_payment_collar_2017_18 nvarchar(max),underp_payment_collar_2018_19 nvarchar(max),underp_payment_collar_2019_20 nvarchar(max),underp_payment_deadband_2015_16 nvarchar(max),underp_payment_deadband_2016_17 nvarchar(max),underp_payment_deadband_2017_18 nvarchar(max),underp_payment_deadband_2018_19 nvarchar(max),underp_payment_deadband_2019_20 nvarchar(max),outp_payment_deadband_2015_16 nvarchar(max),outp_payment_deadband_2016_17 nvarchar(max),outp_payment_deadband_2017_18 nvarchar(max),outp_payment_deadband_2018_19 nvarchar(max),outp_payment_deadband_2019_20 nvarchar(max),outp_payment_cap_2015_16 nvarchar(max),outp_payment_cap_2016_17 nvarchar(max),outp_payment_cap_2017_18 nvarchar(max),outp_payment_cap_2018_19 nvarchar(max),outp_payment_cap_2019_20 nvarchar(max),notes_underp_payment1_incentive_rate_gbpm nvarchar(max),underp_payment1_incentive_rate_gbpm float,notes_underp_payment2_incentive_rate_gbpm nvarchar(max),underp_payment2_incentive_rate_gbpm float,notes_underp_payment3_incentive_rate_gbpm nvarchar(max),underp_payment3_incentive_rate_gbpm float,notes_underp_payment4_incentive_rate_gbpm nvarchar(max),underp_payment4_incentive_rate_gbpm float,notes_outp_payment1_incentive_rate_gbpm nvarchar(max),outp_payment1_incentive_rate_gbpm float,notes_outp_payment2_incentive_rate_gbpm nvarchar(max),outp_payment2_incentive_rate_gbpm float,standard_odi_operand float,standard_odi_operand_note nvarchar(max),performance_level_actual_2014_15 nvarchar(max),performance_level_actual_2015_16 nvarchar(max),pcl_met_2015_16 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_2015_16 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_gbpm_2015_16 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2016_2015_16 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2016_gbpm_2015_16 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2015_16 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2015_16 nvarchar(max),performance_level_actual_2016_17 nvarchar(max),pcl_met_2016_17 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_2016_17 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_gbpm_2016_17 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2017_2016_17 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2017_gbpm_2016_17 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2016_17 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2016_17 nvarchar(max),performance_level_actual_2017_18 nvarchar(max),pcl_met_2017_18 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_2017_18 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_gbpm_2017_18 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2018_2017_18 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2018_gbpm_2017_18 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2017_18 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2017_18 nvarchar(max),performance_level_actual_2018_19 nvarchar(max),pcl_met_2018_19 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_2018_19 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_gbpm_2018_19 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2019_2018_19 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2019_gbpm_2018_19 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2018_19 nvarchar(max),total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2018_19 nvarchar(max),performance_level_actual_2019_20 nvarchar(max),pcl_met_2019_20 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_2019_20 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_gbpm_2019_20 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_2019_20 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_gbpm_2019_20 nvarchar(max),performance_level_actual_estimates_2019_20 nvarchar(max),pcl_met_estimates_2019_20 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_estimates_2019_20 nvarchar(max),outp_payment_or_underp_payment_in_period_odis_gbpm_estimates_2019_20 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_estimates_2019_20 nvarchar(max),notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_gbpm_estimates_2019_20 nvarchar(max),price_control_allocation_water_resources float,price_control_allocation_water_network_plus float,price_control_allocation_wastewater_network_plus float,price_control_allocation_bioresources_sludge float,price_control_allocation_residential_retail float,price_control_allocation_business_retail float,price_control_allocation_direct_procurement_for_customers float,price_control_allocation_dummy_control float)')
         for row in df.itertuples():
             cursor.execute('''
-            INSERT INTO ''' + schemanameused + '''.PR14FinalCSVcreatedbyPython (unique_id,company_type,company,element_name,element_acronym,outcome,pc_ref,annex,performance_commitment,odi_type,odi_form,in_period_odi,vanilla_odi,primary_category,pc_unit,pc_unit_description,decimal_places,direction_of_improving_performance,starting_level_pr14_fd_2014_15,pcl_2015_16,pcl_2016_17,pcl_2017_18,pcl_2018_19,pcl_2019_20,drinking_water_quality_compliance,water_quality_contacts,supply_interruptions_3_hours,pollution_incidents_cat_3,internal_sewer_flooding,scheme_specific_factor,asset_health,nep,aim,no_of_sub_measures,financial_odi_2015_16,financial_odi_2016_17,financial_odi_2017_18,financial_odi_2018_19,financial_odi_2019_20,underp_payment_collar_2015_16,underp_payment_collar_2016_17,underp_payment_collar_2017_18,underp_payment_collar_2018_19,underp_payment_collar_2019_20,underp_payment_deadband_2015_16,underp_payment_deadband_2016_17,underp_payment_deadband_2017_18,underp_payment_deadband_2018_19,underp_payment_deadband_2019_20,outp_payment_deadband_2015_16,outp_payment_deadband_2016_17,outp_payment_deadband_2017_18,outp_payment_deadband_2018_19,outp_payment_deadband_2019_20,outp_payment_cap_2015_16,outp_payment_cap_2016_17,outp_payment_cap_2017_18,outp_payment_cap_2018_19,outp_payment_cap_2019_20,underp_payment1_incentive_rate_gbpm,underp_payment2_incentive_rate_gbpm,underp_payment3_incentive_rate_gbpm,underp_payment4_incentive_rate_gbpm,outp_payment1_incentive_rate_gbpm,outp_payment2_incentive_rate_gbpm,standard_odi_operand,standard_odi_operand_note,performance_level_actual_2014_15,performance_level_actual_2015_16,pcl_met_2015_16,outp_payment_or_underp_payment_in_period_odis_2015_16,outp_payment_or_underp_payment_in_period_odis_gbpm_2015_16,notional_outp_payment_or_underp_payment_accrued_at_31_march_2016_2015_16,notional_outp_payment_or_underp_payment_accrued_at_31_march_2016_gbpm_2015_16,total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2015_16,total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2015_16,performance_level_actual_2016_17,pcl_met_2016_17,outp_payment_or_underp_payment_in_period_odis_2016_17,outp_payment_or_underp_payment_in_period_odis_gbpm_2016_17,notional_outp_payment_or_underp_payment_accrued_at_31_march_2017_2016_17,notional_outp_payment_or_underp_payment_accrued_at_31_march_2017_gbpm_2016_17,total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2016_17,total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2016_17,performance_level_actual_2017_18,pcl_met_2017_18,outp_payment_or_underp_payment_in_period_odis_2017_18,outp_payment_or_underp_payment_in_period_odis_gbpm_2017_18,notional_outp_payment_or_underp_payment_accrued_at_31_march_2018_2017_18,notional_outp_payment_or_underp_payment_accrued_at_31_march_2018_gbpm_2017_18,total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2017_18,total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2017_18,performance_level_actual_2018_19,pcl_met_2018_19,outp_payment_or_underp_payment_in_period_odis_2018_19,outp_payment_or_underp_payment_in_period_odis_gbpm_2018_19,notional_outp_payment_or_underp_payment_accrued_at_31_march_2019_2018_19,notional_outp_payment_or_underp_payment_accrued_at_31_march_2019_gbpm_2018_19,total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2018_19,total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2018_19,performance_level_actual_2019_20,pcl_met_2019_20,outp_payment_or_underp_payment_in_period_odis_2019_20,outp_payment_or_underp_payment_in_period_odis_gbpm_2019_20,notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_2019_20,notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_gbpm_2019_20,performance_level_actual_estimates_2019_20,pcl_met_estimates_2019_20,outp_payment_or_underp_payment_in_period_odis_estimates_2019_20,outp_payment_or_underp_payment_in_period_odis_gbpm_estimates_2019_20,notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_estimates_2019_20,notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_gbpm_estimates_2019_20,price_control_allocation_water_resources,price_control_allocation_water_network_plus,price_control_allocation_wastewater_network_plus,price_control_allocation_bioresources_sludge,price_control_allocation_residential_retail,price_control_allocation_business_retail,price_control_allocation_direct_procurement_for_customers,price_control_allocation_dummy_control,isnumeric_underp_payment1_incentive_rate_gbpm, isnumeric_underp_payment2_incentive_rate_gbpm,isnumeric_underp_payment3_incentive_rate_gbpm, isnumeric_underp_payment4_incentive_rate_gbpm,isnumeric_outp_payment1_incentive_rate_gbpm, isnumeric_outp_payment2_incentive_rate_gbpm,onlynumeric_underp_payment1_incentive_rate_gbpm, onlynumeric_underp_payment2_incentive_rate_gbpm,onlynumeric_underp_payment3_incentive_rate_gbpm, onlynumeric_underp_payment4_incentive_rate_gbpm,onlynumeric_outp_payment1_incentive_rate_gbpm, onlynumeric_outp_payment2_incentive_rate_gbpm)
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+            INSERT INTO ''' + schemanameused + '''.PR14FinalCSVcreatedbyPython (unique_id,company_type,company,element_name,element_acronym,outcome,pc_ref,annex,performance_commitment,odi_type,odi_form,in_period_odi,vanilla_odi,primary_category,pc_unit,pc_unit_description,decimal_places,direction_of_improving_performance,starting_level_pr14_fd_2014_15,pcl_2015_16,pcl_2016_17,pcl_2017_18,pcl_2018_19,pcl_2019_20,PR14_comparative_drinking_water_compliance,PR14_comparative_water_quality_contacts,PR14_comparative_supply_interruptions_3_hours,PR14_comparative_pollution_incidents_cat_3,PR14_comparative_internal_sewer_flooding,scheme_specific_factor,asset_health,nep,aim,no_of_sub_measures,financial_odi_2015_16,financial_odi_2016_17,financial_odi_2017_18,financial_odi_2018_19,financial_odi_2019_20,underp_payment_collar_2015_16,underp_payment_collar_2016_17,underp_payment_collar_2017_18,underp_payment_collar_2018_19,underp_payment_collar_2019_20,underp_payment_deadband_2015_16,underp_payment_deadband_2016_17,underp_payment_deadband_2017_18,underp_payment_deadband_2018_19,underp_payment_deadband_2019_20,outp_payment_deadband_2015_16,outp_payment_deadband_2016_17,outp_payment_deadband_2017_18,outp_payment_deadband_2018_19,outp_payment_deadband_2019_20,outp_payment_cap_2015_16,outp_payment_cap_2016_17,outp_payment_cap_2017_18,outp_payment_cap_2018_19,outp_payment_cap_2019_20,notes_underp_payment1_incentive_rate_gbpm,underp_payment1_incentive_rate_gbpm ,notes_underp_payment2_incentive_rate_gbpm,underp_payment2_incentive_rate_gbpm ,notes_underp_payment3_incentive_rate_gbpm,underp_payment3_incentive_rate_gbpm ,notes_underp_payment4_incentive_rate_gbpm,underp_payment4_incentive_rate_gbpm ,notes_outp_payment1_incentive_rate_gbpm,outp_payment1_incentive_rate_gbpm ,notes_outp_payment2_incentive_rate_gbpm,outp_payment2_incentive_rate_gbpm ,standard_odi_operand ,standard_odi_operand_note,performance_level_actual_2014_15,performance_level_actual_2015_16,pcl_met_2015_16,outp_payment_or_underp_payment_in_period_odis_2015_16,outp_payment_or_underp_payment_in_period_odis_gbpm_2015_16,notional_outp_payment_or_underp_payment_accrued_at_31_march_2016_2015_16,notional_outp_payment_or_underp_payment_accrued_at_31_march_2016_gbpm_2015_16,total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2015_16,total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2015_16,performance_level_actual_2016_17,pcl_met_2016_17,outp_payment_or_underp_payment_in_period_odis_2016_17,outp_payment_or_underp_payment_in_period_odis_gbpm_2016_17,notional_outp_payment_or_underp_payment_accrued_at_31_march_2017_2016_17,notional_outp_payment_or_underp_payment_accrued_at_31_march_2017_gbpm_2016_17,total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2016_17,total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2016_17,performance_level_actual_2017_18,pcl_met_2017_18,outp_payment_or_underp_payment_in_period_odis_2017_18,outp_payment_or_underp_payment_in_period_odis_gbpm_2017_18,notional_outp_payment_or_underp_payment_accrued_at_31_march_2018_2017_18,notional_outp_payment_or_underp_payment_accrued_at_31_march_2018_gbpm_2017_18,total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2017_18,total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2017_18,performance_level_actual_2018_19,pcl_met_2018_19,outp_payment_or_underp_payment_in_period_odis_2018_19,outp_payment_or_underp_payment_in_period_odis_gbpm_2018_19,notional_outp_payment_or_underp_payment_accrued_at_31_march_2019_2018_19,notional_outp_payment_or_underp_payment_accrued_at_31_march_2019_gbpm_2018_19,total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_2018_19,total_amp6_outp_payment_or_underp_payment_31_march_2020_forecast_gbpm_2018_19,performance_level_actual_2019_20,pcl_met_2019_20,outp_payment_or_underp_payment_in_period_odis_2019_20,outp_payment_or_underp_payment_in_period_odis_gbpm_2019_20,notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_2019_20,notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_gbpm_2019_20,performance_level_actual_estimates_2019_20,pcl_met_estimates_2019_20,outp_payment_or_underp_payment_in_period_odis_estimates_2019_20,outp_payment_or_underp_payment_in_period_odis_gbpm_estimates_2019_20,notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_estimates_2019_20,notional_outp_payment_or_underp_payment_accrued_at_31_march_2020_gbpm_estimates_2019_20,price_control_allocation_water_resources ,price_control_allocation_water_network_plus ,price_control_allocation_wastewater_network_plus ,price_control_allocation_bioresources_sludge ,price_control_allocation_residential_retail ,price_control_allocation_business_retail ,price_control_allocation_direct_procurement_for_customers,price_control_allocation_dummy_control)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
             ''',
                            row.unique_id,
                            row.company_type,
@@ -414,11 +467,11 @@ def upload_data():
                            row.pcl_2017_18,
                            row.pcl_2018_19,
                            row.pcl_2019_20,
-                           row.drinking_water_quality_compliance,
-                           row.water_quality_contacts,
-                           row.supply_interruptions_3_hours,
-                           row.pollution_incidents_cat_3,
-                           row.internal_sewer_flooding,
+                           row.PR14_comparative_drinking_water_compliance,
+                           row.PR14_comparative_water_quality_contacts,
+                           row.PR14_comparative_supply_interruptions_3_hours,
+                           row.PR14_comparative_pollution_incidents_cat_3,
+                           row.PR14_comparative_internal_sewer_flooding,
                            row.scheme_specific_factor,
                            row.asset_health,
                            row.nep,
@@ -449,11 +502,17 @@ def upload_data():
                            row.outp_payment_cap_2017_18,
                            row.outp_payment_cap_2018_19,
                            row.outp_payment_cap_2019_20,
+                           row.notes_underp_payment1_incentive_rate_gbpm,
                            row.underp_payment1_incentive_rate_gbpm,
+                           row.notes_underp_payment2_incentive_rate_gbpm,
                            row.underp_payment2_incentive_rate_gbpm,
+                           row.notes_underp_payment3_incentive_rate_gbpm,
                            row.underp_payment3_incentive_rate_gbpm,
+                           row.notes_underp_payment4_incentive_rate_gbpm,
                            row.underp_payment4_incentive_rate_gbpm,
+                           row.notes_outp_payment1_incentive_rate_gbpm,
                            row.outp_payment1_incentive_rate_gbpm,
+                           row.notes_outp_payment2_incentive_rate_gbpm,
                            row.outp_payment2_incentive_rate_gbpm,
                            row.standard_odi_operand,
                            row.standard_odi_operand_note,
@@ -509,19 +568,7 @@ def upload_data():
                            row.price_control_allocation_residential_retail,
                            row.price_control_allocation_business_retail,
                            row.price_control_allocation_direct_procurement_for_customers,
-                           row.price_control_allocation_dummy_control,
-                           row.isnumeric_underp_payment1_incentive_rate_gbpm,
-                           row.isnumeric_underp_payment2_incentive_rate_gbpm,
-                           row.isnumeric_underp_payment3_incentive_rate_gbpm,
-                           row.isnumeric_underp_payment4_incentive_rate_gbpm,
-                           row.isnumeric_outp_payment1_incentive_rate_gbpm,
-                           row.isnumeric_outp_payment2_incentive_rate_gbpm,
-                           row.onlynumeric_underp_payment1_incentive_rate_gbpm,
-                           row.onlynumeric_underp_payment2_incentive_rate_gbpm,
-                           row.onlynumeric_underp_payment3_incentive_rate_gbpm,
-                           row.onlynumeric_underp_payment4_incentive_rate_gbpm,
-                           row.onlynumeric_outp_payment1_incentive_rate_gbpm,
-                           row.onlynumeric_outp_payment2_incentive_rate_gbpm
+                           row.price_control_allocation_dummy_control
                            )
     else:
         print("PR14FinalCSVcreatedbyPython table is present")
@@ -530,14 +577,14 @@ def upload_data():
     cursor.execute(
         "SELECT * FROM information_schema.tables where table_schema ='" + schemanameused + "' and table_name = 'PR19FinalCSVcreatedbyPython'")
     queryforsubmeasuretablecheck = cursor.fetchone()
-    if queryforsubmeasuretablecheck == None:
+    if queryforsubmeasuretablecheck is None:
         print("Creating PR19FinalCSVcreatedbyPython table")
         cursor.execute(
-            'CREATE TABLE ' + schemanameused + '.PR19FinalCSVcreatedbyPython (company nvarchar(max),unique_id nvarchar(max),outcome nvarchar(max),pc_ref nvarchar(max),performance_commitment nvarchar(max),pc_short_description nvarchar(max),price_control_allocation_water_resources float,price_control_allocation_water_network_plus float,price_control_allocation_wastewater_network_plus float,price_control_allocation_bioresources_sludge float,price_control_allocation_residential_retail float,price_control_allocation_business_retail float,price_control_allocation_direct_procurement_for_customers float,price_control_allocation_dummy_control float,odi_type nvarchar(max),odi_form nvarchar(max),odi_timing nvarchar(max),primary_category nvarchar(max),pc_unit nvarchar(max),pc_unit_description nvarchar(max),decimal_places nvarchar(max),direction_of_improving_performance nvarchar(max),common_and_comparable_bespoke_performance_commitment nvarchar(max),customers_relative_priority nvarchar(max),pcl_2020_21 nvarchar(max),pcl_2021_22 nvarchar(max),pcl_2022_23 nvarchar(max),pcl_2023_24 nvarchar(max),pcl_2024_25 nvarchar(max),financial_odi_2020_21 nvarchar(max),financial_odi_2021_22 nvarchar(max),financial_odi_2022_23 nvarchar(max),financial_odi_2023_24 nvarchar(max),financial_odi_2024_25 nvarchar(max),enhanced_underp_payment_collar_2020_21 nvarchar(max),enhanced_underp_payment_collar_2021_22 nvarchar(max),enhanced_underp_payment_collar_2022_23 nvarchar(max),enhanced_underp_payment_collar_2023_24 nvarchar(max),enhanced_underp_payment_collar_2024_25 nvarchar(max),standard_underp_payment_collar_2020_21 nvarchar(max),standard_underp_payment_collar_2021_22 nvarchar(max),standard_underp_payment_collar_2022_23 nvarchar(max),standard_underp_payment_collar_2023_24 nvarchar(max),standard_underp_payment_collar_2024_25 nvarchar(max),underp_payment_deadband_2020_21 nvarchar(max),underp_payment_deadband_2021_22 nvarchar(max),underp_payment_deadband_2022_23 nvarchar(max),underp_payment_deadband_2023_24 nvarchar(max),underp_payment_deadband_2024_25 nvarchar(max),outp_payment_deadband_2020_21 nvarchar(max),outp_payment_deadband_2021_22 nvarchar(max),outp_payment_deadband_2022_23 nvarchar(max),outp_payment_deadband_2023_24 nvarchar(max),outp_payment_deadband_2024_25 nvarchar(max),standard_outp_payment_cap_2020_21 nvarchar(max),standard_outp_payment_cap_2021_22 nvarchar(max),standard_outp_payment_cap_2022_23 nvarchar(max),standard_outp_payment_cap_2023_24 nvarchar(max),standard_outp_payment_cap_2024_25 nvarchar(max),enhanced_outp_payment_cap_2020_21 nvarchar(max),enhanced_outp_payment_cap_2021_22 nvarchar(max),enhanced_outp_payment_cap_2022_23 nvarchar(max),enhanced_outp_payment_cap_2023_24 nvarchar(max),enhanced_outp_payment_cap_2024_25 nvarchar(max),underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply nvarchar(max),underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply nvarchar(max),underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply nvarchar(max),underp_payment_incentive_enhanced_underp_payment nvarchar(max),outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply nvarchar(max),outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply nvarchar(max),outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply nvarchar(max),outp_payment_incentive_enhanced_outp_payment nvarchar(max),standard_odi_cal nvarchar(max),standard_odi_operand float,standard_odi_operand_note nvarchar(max),isnumeric_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply BIT,onlynumeric_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply float,isnumeric_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply BIT,onlynumeric_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply float,isnumeric_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply BIT,onlynumeric_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply float,isnumeric_underp_payment_incentive_enhanced_underp_payment BIT,onlynumeric_underp_payment_incentive_enhanced_underp_payment float,isnumeric_outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply BIT,onlynumeric_outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply float,isnumeric_outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply BIT,onlynumeric_outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply float,isnumeric_outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply BIT,onlynumeric_outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply float,isnumeric_outp_payment_incentive_enhanced_outp_payment BIT,onlynumeric_outp_payment_incentive_enhanced_outp_payment float)')
+            'CREATE TABLE ' + schemanameused + '.PR19FinalCSVcreatedbyPython (company nvarchar(max),unique_id nvarchar(max),outcome nvarchar(max),pc_ref nvarchar(max),performance_commitment nvarchar(max),pc_short_description nvarchar(max),price_control_allocation_water_resources float,price_control_allocation_water_network_plus float,price_control_allocation_wastewater_network_plus float,price_control_allocation_bioresources_sludge float,price_control_allocation_residential_retail float,price_control_allocation_business_retail float,price_control_allocation_direct_procurement_for_customers float,price_control_allocation_dummy_control float,odi_type nvarchar(max),odi_form nvarchar(max),odi_timing nvarchar(max),primary_category nvarchar(max),pc_unit nvarchar(max),pc_unit_description nvarchar(max),decimal_places nvarchar(max),direction_of_improving_performance nvarchar(max),common_and_comparable_bespoke_performance_commitment nvarchar(max),customers_relative_priority nvarchar(max),pcl_2020_21 nvarchar(max),pcl_2021_22 nvarchar(max),pcl_2022_23 nvarchar(max),pcl_2023_24 nvarchar(max),pcl_2024_25 nvarchar(max),financial_odi_2020_21 nvarchar(max),financial_odi_2021_22 nvarchar(max),financial_odi_2022_23 nvarchar(max),financial_odi_2023_24 nvarchar(max),financial_odi_2024_25 nvarchar(max),enhanced_underp_payment_collar_2020_21 nvarchar(max),enhanced_underp_payment_collar_2021_22 nvarchar(max),enhanced_underp_payment_collar_2022_23 nvarchar(max),enhanced_underp_payment_collar_2023_24 nvarchar(max),enhanced_underp_payment_collar_2024_25 nvarchar(max),standard_underp_payment_collar_2020_21 nvarchar(max),standard_underp_payment_collar_2021_22 nvarchar(max),standard_underp_payment_collar_2022_23 nvarchar(max),standard_underp_payment_collar_2023_24 nvarchar(max),standard_underp_payment_collar_2024_25 nvarchar(max),underp_payment_deadband_2020_21 nvarchar(max),underp_payment_deadband_2021_22 nvarchar(max),underp_payment_deadband_2022_23 nvarchar(max),underp_payment_deadband_2023_24 nvarchar(max),underp_payment_deadband_2024_25 nvarchar(max),outp_payment_deadband_2020_21 nvarchar(max),outp_payment_deadband_2021_22 nvarchar(max),outp_payment_deadband_2022_23 nvarchar(max),outp_payment_deadband_2023_24 nvarchar(max),outp_payment_deadband_2024_25 nvarchar(max),standard_outp_payment_cap_2020_21 nvarchar(max),standard_outp_payment_cap_2021_22 nvarchar(max),standard_outp_payment_cap_2022_23 nvarchar(max),standard_outp_payment_cap_2023_24 nvarchar(max),standard_outp_payment_cap_2024_25 nvarchar(max),enhanced_outp_payment_cap_2020_21 nvarchar(max),enhanced_outp_payment_cap_2021_22 nvarchar(max),enhanced_outp_payment_cap_2022_23 nvarchar(max),enhanced_outp_payment_cap_2023_24 nvarchar(max),enhanced_outp_payment_cap_2024_25 nvarchar(max),notes_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply nvarchar(max),underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply float,notes_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply nvarchar(max),underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply float,notes_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply nvarchar(max),underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply float,notes_underp_payment_incentive_enhanced_underp_payment nvarchar(max),underp_payment_incentive_enhanced_underp_payment float,notes_outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply nvarchar(max),outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply float,notes_outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply nvarchar(max),outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply float,notes_outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply nvarchar(max),outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply float,notes_outp_payment_incentive_enhanced_outp_payment nvarchar(max),outp_payment_incentive_enhanced_outp_payment float,standard_odi_cal nvarchar(max),standard_odi_operand float,standard_odi_operand_note nvarchar(max))')
         for row in df1.itertuples():
             cursor.execute('''
-            INSERT INTO ''' + schemanameused + '''.PR19FinalCSVcreatedbyPython (company,unique_id,outcome,pc_ref,performance_commitment,pc_short_description,price_control_allocation_water_resources,price_control_allocation_water_network_plus,price_control_allocation_wastewater_network_plus,price_control_allocation_bioresources_sludge,price_control_allocation_residential_retail,price_control_allocation_business_retail,price_control_allocation_direct_procurement_for_customers,price_control_allocation_dummy_control,odi_type,odi_form,odi_timing,primary_category,pc_unit,pc_unit_description,decimal_places,direction_of_improving_performance,common_and_comparable_bespoke_performance_commitment,customers_relative_priority,pcl_2020_21,pcl_2021_22,pcl_2022_23,pcl_2023_24,pcl_2024_25,financial_odi_2020_21,financial_odi_2021_22,financial_odi_2022_23,financial_odi_2023_24,financial_odi_2024_25,enhanced_underp_payment_collar_2020_21,enhanced_underp_payment_collar_2021_22,enhanced_underp_payment_collar_2022_23,enhanced_underp_payment_collar_2023_24,enhanced_underp_payment_collar_2024_25,standard_underp_payment_collar_2020_21,standard_underp_payment_collar_2021_22,standard_underp_payment_collar_2022_23,standard_underp_payment_collar_2023_24,standard_underp_payment_collar_2024_25,underp_payment_deadband_2020_21,underp_payment_deadband_2021_22,underp_payment_deadband_2022_23,underp_payment_deadband_2023_24,underp_payment_deadband_2024_25,outp_payment_deadband_2020_21,outp_payment_deadband_2021_22,outp_payment_deadband_2022_23,outp_payment_deadband_2023_24,outp_payment_deadband_2024_25,standard_outp_payment_cap_2020_21,standard_outp_payment_cap_2021_22,standard_outp_payment_cap_2022_23,standard_outp_payment_cap_2023_24,standard_outp_payment_cap_2024_25,enhanced_outp_payment_cap_2020_21,enhanced_outp_payment_cap_2021_22,enhanced_outp_payment_cap_2022_23,enhanced_outp_payment_cap_2023_24,enhanced_outp_payment_cap_2024_25,underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply,underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply,underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply,underp_payment_incentive_enhanced_underp_payment,outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply,outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply,outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply,outp_payment_incentive_enhanced_outp_payment,standard_odi_cal,standard_odi_operand,standard_odi_operand_note,isnumeric_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply ,onlynumeric_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply ,isnumeric_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply ,onlynumeric_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply ,isnumeric_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply ,onlynumeric_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply ,isnumeric_underp_payment_incentive_enhanced_underp_payment ,onlynumeric_underp_payment_incentive_enhanced_underp_payment ,isnumeric_outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply ,onlynumeric_outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply ,isnumeric_outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply ,onlynumeric_outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply ,isnumeric_outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply ,onlynumeric_outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply ,isnumeric_outp_payment_incentive_enhanced_outp_payment ,onlynumeric_outp_payment_incentive_enhanced_outp_payment)
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+            INSERT INTO ''' + schemanameused + '''.PR19FinalCSVcreatedbyPython (company ,unique_id ,outcome ,pc_ref ,performance_commitment ,pc_short_description ,price_control_allocation_water_resources ,price_control_allocation_water_network_plus ,price_control_allocation_wastewater_network_plus ,price_control_allocation_bioresources_sludge ,price_control_allocation_residential_retail ,price_control_allocation_business_retail ,price_control_allocation_direct_procurement_for_customers ,price_control_allocation_dummy_control ,odi_type ,odi_form ,odi_timing ,primary_category ,pc_unit ,pc_unit_description ,decimal_places ,direction_of_improving_performance ,common_and_comparable_bespoke_performance_commitment ,customers_relative_priority ,pcl_2020_21 ,pcl_2021_22 ,pcl_2022_23 ,pcl_2023_24 ,pcl_2024_25 ,financial_odi_2020_21 ,financial_odi_2021_22 ,financial_odi_2022_23 ,financial_odi_2023_24 ,financial_odi_2024_25 ,enhanced_underp_payment_collar_2020_21 ,enhanced_underp_payment_collar_2021_22 ,enhanced_underp_payment_collar_2022_23 ,enhanced_underp_payment_collar_2023_24 ,enhanced_underp_payment_collar_2024_25 ,standard_underp_payment_collar_2020_21 ,standard_underp_payment_collar_2021_22 ,standard_underp_payment_collar_2022_23 ,standard_underp_payment_collar_2023_24 ,standard_underp_payment_collar_2024_25 ,underp_payment_deadband_2020_21 ,underp_payment_deadband_2021_22 ,underp_payment_deadband_2022_23 ,underp_payment_deadband_2023_24 ,underp_payment_deadband_2024_25 ,outp_payment_deadband_2020_21 ,outp_payment_deadband_2021_22 ,outp_payment_deadband_2022_23 ,outp_payment_deadband_2023_24 ,outp_payment_deadband_2024_25 ,standard_outp_payment_cap_2020_21 ,standard_outp_payment_cap_2021_22 ,standard_outp_payment_cap_2022_23 ,standard_outp_payment_cap_2023_24 ,standard_outp_payment_cap_2024_25 ,enhanced_outp_payment_cap_2020_21 ,enhanced_outp_payment_cap_2021_22 ,enhanced_outp_payment_cap_2022_23 ,enhanced_outp_payment_cap_2023_24 ,enhanced_outp_payment_cap_2024_25 ,notes_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply ,underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply ,notes_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply ,underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply ,notes_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply ,underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply ,notes_underp_payment_incentive_enhanced_underp_payment ,underp_payment_incentive_enhanced_underp_payment ,notes_outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply ,outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply ,notes_outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply ,outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply ,notes_outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply ,outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply ,notes_outp_payment_incentive_enhanced_outp_payment ,outp_payment_incentive_enhanced_outp_payment ,standard_odi_cal ,standard_odi_operand ,standard_odi_operand_note)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
             ''',
                            row.company,
                            row.unique_id,
@@ -603,33 +650,25 @@ def upload_data():
                            row.enhanced_outp_payment_cap_2022_23,
                            row.enhanced_outp_payment_cap_2023_24,
                            row.enhanced_outp_payment_cap_2024_25,
+                           row.notes_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply,
                            row.underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply,
+                           row.notes_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply,
                            row.underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply,
+                           row.notes_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply,
                            row.underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply,
+                           row.notes_underp_payment_incentive_enhanced_underp_payment,
                            row.underp_payment_incentive_enhanced_underp_payment,
+                           row.notes_outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply,
                            row.outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply,
+                           row.notes_outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply,
                            row.outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply,
+                           row.notes_outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply,
                            row.outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply,
+                           row.notes_outp_payment_incentive_enhanced_outp_payment,
                            row.outp_payment_incentive_enhanced_outp_payment,
                            row.standard_odi_cal,
                            row.standard_odi_operand,
-                           row.standard_odi_operand_note,
-                           row.isnumeric_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply,
-                           row.onlynumeric_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply,
-                           row.isnumeric_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply,
-                           row.onlynumeric_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply,
-                           row.isnumeric_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply,
-                           row.onlynumeric_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply,
-                           row.isnumeric_underp_payment_incentive_enhanced_underp_payment,
-                           row.onlynumeric_underp_payment_incentive_enhanced_underp_payment,
-                           row.isnumeric_outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply,
-                           row.onlynumeric_outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply,
-                           row.isnumeric_outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply,
-                           row.onlynumeric_outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply,
-                           row.isnumeric_outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply,
-                           row.onlynumeric_outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply,
-                           row.isnumeric_outp_payment_incentive_enhanced_outp_payment,
-                           row.onlynumeric_outp_payment_incentive_enhanced_outp_payment
+                           row.standard_odi_operand_note
                            )
     else:
         print("PR19FinalCSVcreatedbyPython table is present")
@@ -638,7 +677,7 @@ def upload_data():
     cursor.execute(
         "SELECT * FROM information_schema.tables where table_schema ='" + schemanameused + "' and table_name = 'PR14SubmeasureFinalCSVcreatedbyPython'")
     queryforsubmeasuretablecheck = cursor.fetchone()
-    if queryforsubmeasuretablecheck == None:
+    if queryforsubmeasuretablecheck is None:
         print("Creating PR14SubmeasureFinalCSVcreatedbyPython table")
         cursor.execute(
             'CREATE TABLE ' + schemanameused + '.PR14SubmeasureFinalCSVcreatedbyPython(unique_id nvarchar(max),company_type nvarchar(max),company nvarchar(max),element_acronym nvarchar(max),pc_ref nvarchar(max),performance_commitment nvarchar(max),odi_type nvarchar(max),primary_category nvarchar(max),pc_unit_description nvarchar(max),starting_level_pr14_fd_2014_15 nvarchar(max),pcl_2015_16 nvarchar(max),pcl_2016_17 nvarchar(max),pcl_2017_18 nvarchar(max),pcl_2018_19 nvarchar(max),pcl_2019_20 nvarchar(max),sub_measure_id nvarchar(max),sub_measure nvarchar(max),sub_measure_category nvarchar(max),sub_measure_weighting nvarchar(max),pc_unit nvarchar(max),decimal_places nvarchar(max),submeasure_performace_level_reference_regulatory_output_during_2010_15 nvarchar(max),submeasure_performace_level_reference_expected_performance_by_2014_15 nvarchar(max),submeasure_performace_level_2015_16 nvarchar(max),submeasure_performace_level_2016_17 nvarchar(max),submeasure_performace_level_2017_18 nvarchar(max),submeasure_performace_level_2018_19 nvarchar(max),submeasure_performace_level_2019_20 nvarchar(max),submeasure_high_reference_regulatory_output_during_2010_15 nvarchar(max),submeasure_high_reference_expected_performance_by_2014_15 nvarchar(max),submeasure_high_2015_16 nvarchar(max),submeasure_high_2016_17 nvarchar(max),submeasure_high_2017_18 nvarchar(max),submeasure_high_2018_19 nvarchar(max),submeasure_high_2019_20 nvarchar(max),submeasure_low_reference_regulatory_output_during_2010_15 float,submeasure_low_reference_expected_performance_by_2014_15 float,submeasure_low_2015_16 nvarchar(max),submeasure_low_2016_17 nvarchar(max),submeasure_low_2017_18 nvarchar(max),submeasure_low_2018_19 nvarchar(max),submeasure_low_2019_20 nvarchar(max),failure_threshold_for_AMP6 nvarchar(max),actual_performance_level_pcs_submeasures_actual_2014_15 nvarchar(max),actual_performance_level_pcs_submeasures_actual_2015_16 nvarchar(max),actual_performance_level_pcs_submeasures_pcl_met_2015_16 nvarchar(max),actual_performance_level_pcs_submeasures_actual_2016_17 nvarchar(max),actual_performance_level_pcs_submeasures_pcl_met_2016_17 nvarchar(max),actual_performance_level_pcs_submeasures_actual_2017_18 nvarchar(max),actual_performance_level_pcs_submeasures_pcl_met_2017_18 nvarchar(max),actual_performance_level_pcs_submeasures_actual_2018_19 nvarchar(max),actual_performance_level_pcs_submeasures_pcl_met_2018_19 nvarchar(max),actual_performance_level_pcs_submeasures_actual_2019_20 nvarchar(max),actual_performance_level_pcs_submeasures_pcl_met_2019_20 nvarchar(max),actual_performance_level_pcs_submeasures_actual_estimate_2019_20 nvarchar(max),actual_performance_level_pcs_submeasures_pcl_met_estimate_2019_20 nvarchar(max),direction_of_improving_performance nvarchar(max),comms_filter nvarchar(max),actual_performance_compared_with_previous_actual_performance_2014_15_to_2015_16 nvarchar(max),actual_performance_compared_with_previous_actual_performance_2015_16_to_2016_17 nvarchar(max),actual_performance_compared_with_previous_actual_performance_2016_17_to_2017_18 nvarchar(max),actual_performance_compared_with_previous_actual_performance_2017_18_to_2018_19 nvarchar(max),actual_performance_compared_with_previous_actual_performance_2018_19_to_2019_20 nvarchar(max),actual_performance_compared_with_previous_actual_performance_2014_15_to_2016_17_amp_so_far nvarchar(max))')
