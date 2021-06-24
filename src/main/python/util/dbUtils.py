@@ -28,5 +28,7 @@ def schemacreation():
         print("Schema is present")
     else:
         print("Schema is not present creating one")
-        cursor.execute('CREATE SCHEMA nw')
+        print("CREATE SCHEMA " + dbinformation["schema"])
+        cursor.execute("CREATE SCHEMA " + dbinformation["schema"])
+        conn.commit()
     return dbinformation["schema"]
