@@ -1,9 +1,8 @@
 import numpy as np
 
 
-def replacespaces(dataframe):
-    dataframe = dataframe.replace(r'^\s*$', np.nan, regex=True)
-    return dataframe
+def replacespaces(dataframe, iteratorvariable):
+    return dataframe[iteratorvariable].replace(r'^\s*$', np.nan, regex=True)
 
 
 def replacedashes(dataframe, iteratorvariable):

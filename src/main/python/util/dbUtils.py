@@ -7,7 +7,8 @@ def configfilereading():
     with open("C:/Users/Niyati.Wawre/.dbt/profiles.yml", "r") as ymlfile:
         cfg = yaml.safe_load(ymlfile)
     # return cfg["mssql"]
-    return cfg["demo_dbt"]["outputs"]["dev"]
+    target = cfg["demo_dbt"]["target"]
+    return cfg["demo_dbt"]["outputs"][target]
 
 
 def sqlserverconnection():
