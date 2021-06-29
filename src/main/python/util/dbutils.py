@@ -4,7 +4,7 @@ import yaml
 
 def configfilereading():
     # Connect to SQL Server
-    with open("C:/Users/Niyati.Wawre/.dbt/profiles.yml", "r") as ymlfile:
+    with open("C:/Users/Adam.Dev/.dbt/profiles.yml", "r") as ymlfile:
         cfg = yaml.safe_load(ymlfile)
     # return cfg["mssql"]
     return cfg["demo_dbt"]["outputs"]["dev"]
@@ -22,11 +22,13 @@ def schemacreation():
     dbinformation = configfilereading()
     conn = sqlserverconnection()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM sys.schemas WHERE name = " + "'" + dbinformation["schema"] + "'")
+    statement = "SELECT * FROM sys.schemas WHERE name = " + "'" + dbinformation["schema"] + "_generated_sources'"
+    print(statement)
+    cursor.execute(statement)
     schemanamequery = cursor.fetchone()
     if schemanamequery:
         print("Schema is present")
     else:
         print("Schema is not present creating one")
-        cursor.execute('CREATE SCHEMA nw')
-    return dbinformation["schema"]
+        cursor.execute('CREATE SCHEMA '  + "'" + dbinformation["schema"] + "_generated_sources'")
+    return dbinformation["schema"] + "_generated_sources"
