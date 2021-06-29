@@ -1,8 +1,8 @@
-from service import ReadExcel
+from service import readExcel
 
 
 def main():
-    ReadExcel.upload_data()
+    readExcel.upload_data()
 
 if __name__ == "__main__":
     main()

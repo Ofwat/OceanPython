@@ -7,7 +7,8 @@ def configfilereading():
     with open("C:/Users/Adam.Dev/.dbt/profiles.yml", "r") as ymlfile:
         cfg = yaml.safe_load(ymlfile)
     # return cfg["mssql"]
-    return cfg["demo_dbt"]["outputs"]["dev"]
+    target = cfg["demo_dbt"]["target"]
+    return cfg["demo_dbt"]["outputs"][target]
 
 
 def sqlserverconnection():
@@ -30,5 +31,7 @@ def schemacreation():
         print("Schema is present")
     else:
         print("Schema is not present creating one")
+        print("CREATE SCHEMA " + dbinformation["schema"])
         cursor.execute('CREATE SCHEMA '  + "'" + dbinformation["schema"] + "_generated_sources'")
+        conn.commit()
     return dbinformation["schema"] + "_generated_sources"
