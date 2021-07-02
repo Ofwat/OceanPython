@@ -1,23 +1,23 @@
 import numpy as np
 
 
-def replacespaces(dataframe, iteratorvariable):
+def replace_spaces(dataframe, iteratorvariable):
     return dataframe[iteratorvariable].replace(r'^\s*$', np.nan, regex=True)
 
 
-def replacedashes(dataframe, iteratorvariable):
+def replace_dashes_with_nan(dataframe, iteratorvariable):
     return dataframe[iteratorvariable].replace('-', np.nan)
 
 
-def replacenullvalues(dataframe, iteratorvariable):
+def replace_null_with_None(dataframe, iteratorvariable):
     return np.where(dataframe[iteratorvariable].isnull(), None, dataframe[iteratorvariable])
 
 
-def replaceyeswithtrues(dataframe, iteratorvariable):
+def replace_yes_with_true(dataframe, iteratorvariable):
     return np.where(dataframe[iteratorvariable].str.lower() == 'yes', 'TRUE', None)
 
 
-def isnumericandonlynumeric(dataframe, iteratorvariable):
+def is_numeric_and_only_numeric(dataframe, iteratorvariable):
     dataframe['isnumeric_' + iteratorvariable] = (dataframe[iteratorvariable].apply(
         lambda x: isinstance(x, (int, np.int64)))) | (dataframe[iteratorvariable].apply(
                                                          lambda x: isinstance(x, (float, np.float64))))
@@ -34,6 +34,6 @@ def isnumericandonlynumeric(dataframe, iteratorvariable):
     na_mask = dataframe['notes_' + iteratorvariable].notnull()
 
 
-def changecompanytoUUW(dataframe):
+def change_company_to_UUW(dataframe):
     dataframe['company'] = np.where((dataframe.company == 'UU'), 'UUW', dataframe.company)
     return dataframe['company']

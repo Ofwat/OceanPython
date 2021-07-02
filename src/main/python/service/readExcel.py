@@ -157,23 +157,23 @@ def upload_data():
     for column in df:
         listofPR14columns.append(column)
     for i in listofPR14columns:
-        df[i] = validations.replacespaces(df, i)
-        df[i] = validations.replacedashes(df, i)
-        df[i] = validations.replacenullvalues(df, i)
+        df[i] = validations.replace_spaces(df, i)
+        df[i] = validations.replace_dashes_with_nan(df, i)
+        df[i] = validations.replace_null_with_None(df, i)
         if i in ['PR14_comparative_drinking_water_compliance', 'PR14_comparative_water_quality_contacts',
                  'PR14_comparative_supply_interruptions_3_hours',
                  'PR14_comparative_pollution_incidents_cat_3', 'PR14_comparative_internal_sewer_flooding',
                  'scheme_specific_factor', 'asset_health',
                  'nep',
                  'aim']:
-            df[i] = validations.replaceyeswithtrues(df, i)
+            df[i] = validations.replace_yes_with_true(df, i)
         if i in ['underp_payment1_incentive_rate_gbpm_column', 'underp_payment2_incentive_rate_gbpm_column',
                  'underp_payment3_incentive_rate_gbpm_column', 'underp_payment4_incentive_rate_gbpm_column',
                  'outp_payment1_incentive_rate_gbpm_column', 'outp_payment2_incentive_rate_gbpm_column']:
-            validations.isnumericandonlynumeric(df, i)
+            validations.is_numeric_and_only_numeric(df, i)
 
         if i == 'company':
-            df[i] = validations.changecompanytoUUW(df)
+            df[i] = validations.change_company_to_UUW(df)
     df = df.rename(
         columns={'onlynumeric_underp_payment1_incentive_rate_gbpm_column': 'underp_payment1_incentive_rate_gbpm',
                  'onlynumeric_underp_payment2_incentive_rate_gbpm_column': 'underp_payment2_incentive_rate_gbpm',
@@ -286,11 +286,11 @@ def upload_data():
     for column in df1:
         listofPR19columns.append(column)
     for j in listofPR19columns:
-        df1[j] = validations.replacespaces(df1, j)
-        df1[j] = validations.replacedashes(df1, j)
-        df1[j] = validations.replacenullvalues(df1, j)
+        df1[j] = validations.replace_spaces(df1, j)
+        df1[j] = validations.replace_dashes_with_nan(df1, j)
+        df1[j] = validations.replace_null_with_None(df1, j)
         if j in ['scheme_specific_factor', 'asset_health', 'nep', 'aim']:
-            df1[j] = validations.replaceyeswithtrues(df1, j)
+            df1[j] = validations.replace_yes_with_true(df1, j)
         if j in ['underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply_column',
                  'underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply_column',
                  'underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply_column',
@@ -299,7 +299,7 @@ def upload_data():
                  'outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply_column',
                  'outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply_column',
                  'outp_payment_incentive_enhanced_outp_payment_column']:
-            validations.isnumericandonlynumeric(df1, j)
+            validations.is_numeric_and_only_numeric(df1, j)
     df1 = df1.rename(columns={
         'onlynumeric_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply_column': 'underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply',
         'onlynumeric_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply_column': 'underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply',
@@ -412,21 +412,21 @@ def upload_data():
     for column in df2:
         listofsubmeasurecolumns.append(column)
     for k in listofsubmeasurecolumns:
-        df2[k] = validations.replacespaces(df2, k)
-        df2[k] = validations.replacedashes(df2, k)
-        df2[k] = validations.replacenullvalues(df2, k)
+        df2[k] = validations.replace_spaces(df2, k)
+        df2[k] = validations.replace_dashes_with_nan(df2, k)
+        df2[k] = validations.replace_null_with_None(df2, k)
         if k in ['actual_performance_level_pcs_submeasures_pcl_met_2015_16',
                  'actual_performance_level_pcs_submeasures_pcl_met_2016_17',
                  'actual_performance_level_pcs_submeasures_pcl_met_2017_18',
                  'actual_performance_level_pcs_submeasures_pcl_met_2018_19',
                  'actual_performance_level_pcs_submeasures_pcl_met_2019_20',
                  'actual_performance_level_pcs_submeasures_pcl_met_estimate_2019_20']:
-            df2[k] = validations.replaceyeswithtrues(df2, k)
+            df2[k] = validations.replace_yes_with_true(df2, k)
         if k == 'company':
-            df2[k] = validations.changecompanytoUUW(df2)
+            df2[k] = validations.change_company_to_UUW(df2)
 
-    conn = dbUtils.sqlserverconnection()
-    schemanameused = dbUtils.schemacreation()
+    conn = dbUtils.sql_server_connection()
+    schemanameused = dbUtils.create_schema()
     cursor = conn.cursor()
 
     # Query for PR14 data upload
