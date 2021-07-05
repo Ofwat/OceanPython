@@ -4,7 +4,7 @@ import yaml
 
 def read_config_file():
     # Connect to SQL Server
-    with open("C:/Users/Adam.Dev/.dbt/profiles.yml", "r") as ymlfile:
+    with open("C:/Users/Niyati.Wawre/.dbt/profiles.yml", "r") as ymlfile:
         cfg = yaml.safe_load(ymlfile)
     # return cfg["mssql"]
     target = cfg["demo_dbt"]["target"]
@@ -32,9 +32,9 @@ def create_schema():
     if (cursor.fetchone()):
         print("Schema " + schema_name + " is present")
     else:
-        print("Schema " + schema_name + " is not present")
-        print("CREATE SCHEMA " + schema_name)
-        cursor.execute("CREATE SCHEMA "  +  schema_name)
+        print("Schema is not present creating one")
+        print("CREATE SCHEMA " + dbinformation["schema"] + "_generated_sources" + "'")
+        cursor.execute('CREATE SCHEMA ' + "'" + dbinformation["schema"] + "_generated_sources" + "'")
         conn.commit()
     conn.close()
 
