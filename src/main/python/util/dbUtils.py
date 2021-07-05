@@ -32,9 +32,9 @@ def create_schema():
     if (cursor.fetchone()):
         print("Schema " + schema_name + " is present")
     else:
-        print("Schema is not present creating one")
-        print("CREATE SCHEMA " + dbinformation["schema"] + "_generated_sources" + "'")
-        cursor.execute('CREATE SCHEMA ' + "'" + dbinformation["schema"] + "_generated_sources" + "'")
+        print("Schema " + schema_name + " is not present")
+        print("CREATE SCHEMA " + schema_name)
+        cursor.execute("CREATE SCHEMA "  +  schema_name)
         conn.commit()
     conn.close()
 
