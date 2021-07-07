@@ -13,32 +13,44 @@ import numpy as np
 
 comment = 'Initial APR load'
 excel_user = 'Fred'
-#excel_sheet = 'C:\\dev\\python\\Hafren_Outcome.xlsx'
-# excel_sheet = 'C:\\dev\\python\\Anglian_Outcome.xlsx'
-
 
 submission_status_actual = 'Actual'
 submission_status_past_performance = 'Past performance'
 
 
+def get_bespoke_text(pc_sheet):
+    if ("3A" == pc_sheet):
+        return 'Bespoke PCs - Water and Retail (Financial)'
+    elif ("3B" == pc_sheet):
+        return 'Bespoke PCs - Wastewater (Financial)'
+    elif ("3E" == pc_sheet):
+        return 'Bespoke PCs '
+    return None
+
+def select_all_pcs(data_area_of_all_pcs):
+    all_pcs = data_area_of_all_pcs[data_area_of_all_pcs.iloc[:,1].notnull()]
+    return all_pcs
+
+def select_bespoke_pcs(pc_sheet, data_area_of_all_pcs):
+    bespoke_text = get_bespoke_text(pc_sheet)
+    row_index_with_bespoke = np.where(
+        (True == (bespoke_text == data_area_of_all_pcs.iloc[:,0])) & (data_area_of_all_pcs.iloc[:,1].isnull()))
+    if (0 == len(row_index_with_bespoke[0])):
+        print("Sheet: ", pc_sheet, " Bespoke text '", bespoke_text, "' not found")
+        return pd.DataFrame()
+
+    index_of_bespoke_row = row_index_with_bespoke[0][0]
+    data_area_of_bespoke_pcs_only = data_area_of_all_pcs.iloc[index_of_bespoke_row:, 0:10]
+    bespoke_pcs_only = data_area_of_bespoke_pcs_only[data_area_of_bespoke_pcs_only.iloc[:,1].notnull()]
+    return bespoke_pcs_only
+
 def read_pc_sheet(excel_sheet, pc_sheet, outcome_performance_type, pc_records, common_data):
     spreadsheet = pd.read_excel(excel_sheet, sheet_name=pc_sheet, header=None)
     spreadsheet_updated = datetime.datetime.utcfromtimestamp(os.path.getmtime(excel_sheet))
-    data_area = spreadsheet.iloc[5:, 1:10]
-    print(data_area)
-    print('*****')
-    # print(data_area.index.get_loc('Bespoke PCs - Water and Retail (Financial)'))
-    # print(data_area.index.get_loc(6))
-    print(data_area.iloc[:,0].str.startswith('Bespoke'))
-    print('*****')
-    print(np.where(True == data_area.iloc[:,0].str.startswith('Bespoke')))
-    # data_area.iloc[:,0].str.startswith('Bespoke') & data_area.iloc[:,1].isnull()
-    print('*****')
-    
-
-    pc_data = data_area[data_area.iloc[:,1].notnull()]
-    # print(pc_data)
-
+    data_area_of_all_pcs = spreadsheet.iloc[5:, 1:10]
+    # pc_data = select_all_pcs(data_area_of_all_pcs)
+    pc_data = select_bespoke_pcs(pc_sheet, data_area_of_all_pcs)
+    print(pc_data)
     for i in range(len(pc_data)):
         if ("3A" == pc_sheet or "3B" == pc_sheet):
             pc_record = PCRecord(spreadsheet_updated, outcome_performance_type, pc_data.iloc[i, 0], pc_data.iloc[i, 1], pc_data.iloc[i, 2], pc_data.iloc[i, 3], pc_data.iloc[i, 4], pc_data.iloc[i, 5], pc_data.iloc[i, 6], pc_data.iloc[i, 7], pc_data.iloc[i, 8], common_data.company_acronym, common_data.company_name, common_data.year, submission_status_actual, common_data.excel_user, common_data.excel_file, common_data.comment)
@@ -107,8 +119,6 @@ def record_batch_data(excel_sheet, common_data):
     common_data.excel_file = excel_sheet
     common_data.comment = comment
 
-
-
 def read_sheets(excel_sheet):
     # Read sheets
     common_data = PCCommonData()
@@ -119,10 +129,10 @@ def read_sheets(excel_sheet):
 
     pc_records = {}
     read_pc_sheet(excel_sheet, "3A", "Water performance commitments (financial)", pc_records, common_data)
-    # read_pc_sheet(excel_sheet, "3B", "Wastewater performance commitments (financial)", pc_records, common_data)
-    # read_pc_sheet(excel_sheet, "3E", "Non financial performance commitments", pc_records, common_data)
-    #print_all_records(pc_records)
-    print("Number of PCs = ", len(pc_records))
+    read_pc_sheet(excel_sheet, "3B", "Wastewater performance commitments (financial)", pc_records, common_data)
+    read_pc_sheet(excel_sheet, "3E", "Non financial performance commitments", pc_records, common_data)
+    print_all_records(pc_records)
+    # print("Number of PCs = ", len(pc_records))
     return pc_records
 
 
@@ -137,9 +147,9 @@ def write_to_database(pc_records):
     
 
 def process_actuals(cli_args):
-    # excel_sheet = 'C:\\dev\\python\\PR19IPD01_ODI-performance-model-May-2021_v1.4 with dummy ANH data_23_Jun_21.xlsx'
     pc_records = read_sheets(cli_args.input_file)
-    # write_to_database(pc_records)
+    if (not cli_args.test_run):
+        write_to_database(pc_records)
 
 
 

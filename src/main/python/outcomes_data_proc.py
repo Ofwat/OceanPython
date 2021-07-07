@@ -5,40 +5,41 @@ from service import actualsDao
 import argparse
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(allow_abbrev=False)
     parser.add_argument('command',
                         metavar='command',
                         action='store',
                         choices=['PR14base', 'PR19base', 'PR19update'],
                         help='Select which type of data to process')
 
-    parser.add_argument('-i',
-                       '--input_file',
-                       required=False,
+    parser.add_argument('--input_file',
+                       required=True,
                        action='store',
                        type=str,
                        dest='input_file')
 
-    parser.add_argument('-c',
-                       '--comment',
+    parser.add_argument('--comment',
                        required=False,
                        action='store',
                        type=str,
                        dest='comment')
 
-    parser.add_argument('-u',
-                       '--user',
-                       required=False,
+    parser.add_argument('--user',
+                       required=True,
                        action='store',
                        type=str,
-                       dest='data')
+                       dest='user')
 
-    parser.add_argument('-l',
-                       '--log_file',
+    parser.add_argument('--log_file',
                        required=False,
                        action='store',
                        type=str,
-                       dest='log_file')
+                       dest='log_file',
+                       default='..\outcomes.log')
+
+    parser.add_argument('--test',
+                       action='store_true',
+                       dest='test_run')
 
     args = parser.parse_args()
     print(vars(args))
