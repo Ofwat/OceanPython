@@ -8,11 +8,12 @@ import math
 from actuals.pcRecord import PCRecord
 from actuals.pcCommonData import PCCommonData
 from service import actualsDao
+import numpy as np
 
 
 comment = 'Initial APR load'
 excel_user = 'Fred'
-excel_sheet = 'C:\\dev\\python\\Hafren_Outcome.xlsx'
+#excel_sheet = 'C:\\dev\\python\\Hafren_Outcome.xlsx'
 # excel_sheet = 'C:\\dev\\python\\Anglian_Outcome.xlsx'
 
 
@@ -24,7 +25,19 @@ def read_pc_sheet(excel_sheet, pc_sheet, outcome_performance_type, pc_records, c
     spreadsheet = pd.read_excel(excel_sheet, sheet_name=pc_sheet, header=None)
     spreadsheet_updated = datetime.datetime.utcfromtimestamp(os.path.getmtime(excel_sheet))
     data_area = spreadsheet.iloc[5:, 1:10]
+    print(data_area)
+    print('*****')
+    # print(data_area.index.get_loc('Bespoke PCs - Water and Retail (Financial)'))
+    # print(data_area.index.get_loc(6))
+    print(data_area.iloc[:,0].str.startswith('Bespoke'))
+    print('*****')
+    print(np.where(True == data_area.iloc[:,0].str.startswith('Bespoke')))
+    # data_area.iloc[:,0].str.startswith('Bespoke') & data_area.iloc[:,1].isnull()
+    print('*****')
+    
+
     pc_data = data_area[data_area.iloc[:,1].notnull()]
+    # print(pc_data)
 
     for i in range(len(pc_data)):
         if ("3A" == pc_sheet or "3B" == pc_sheet):
@@ -96,7 +109,7 @@ def record_batch_data(excel_sheet, common_data):
 
 
 
-def read_sheets():
+def read_sheets(excel_sheet):
     # Read sheets
     common_data = PCCommonData()
     record_batch_data(excel_sheet, common_data)
@@ -106,8 +119,8 @@ def read_sheets():
 
     pc_records = {}
     read_pc_sheet(excel_sheet, "3A", "Water performance commitments (financial)", pc_records, common_data)
-    read_pc_sheet(excel_sheet, "3B", "Wastewater performance commitments (financial)", pc_records, common_data)
-    read_pc_sheet(excel_sheet, "3E", "Non financial performance commitments", pc_records, common_data)
+    # read_pc_sheet(excel_sheet, "3B", "Wastewater performance commitments (financial)", pc_records, common_data)
+    # read_pc_sheet(excel_sheet, "3E", "Non financial performance commitments", pc_records, common_data)
     #print_all_records(pc_records)
     print("Number of PCs = ", len(pc_records))
     return pc_records
@@ -119,14 +132,14 @@ def write_to_database(pc_records):
         records_for_db.append(value.data_for_db())
         # print(value.data_for_db())
         # print('')
-    actualsDao.create_actuals_table()
     actualsDao.insert_to_actuals_table(records_for_db)
 
     
 
-def process_actuals():
-    pc_records = read_sheets()
-    write_to_database(pc_records)
+def process_actuals(cli_args):
+    # excel_sheet = 'C:\\dev\\python\\PR19IPD01_ODI-performance-model-May-2021_v1.4 with dummy ANH data_23_Jun_21.xlsx'
+    pc_records = read_sheets(cli_args.input_file)
+    # write_to_database(pc_records)
 
 
 

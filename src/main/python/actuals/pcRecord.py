@@ -1,5 +1,6 @@
 
 class PCRecord:
+
     def __init__(self, updated_at, outcome_performance_type, line_description, unique_reference, unit, decimal_places, pcl_actual_pry, pcl_actual_cry, pcl_met, outperformance_or_underperformance_payment, forecast_of_total_2020_25_outperformance_or_underperformance_payment, company_acronym, company_name, year, submission_status, excel_user, excel_file, comment):
         self.updated_at = updated_at
         self.outcome_performance_type = outcome_performance_type
@@ -19,6 +20,7 @@ class PCRecord:
         self.excel_file = excel_file
         self.excel_user = excel_user
         self.comment = comment
+        self.correct_data()
 
 
     def print_content(self):
@@ -44,8 +46,36 @@ class PCRecord:
     def data_for_db(self):
         return self.updated_at, str(self.excel_file), str(self.excel_user), str(self.comment), 'AMP7', str(self.year), str(self.submission_status), str(self.unique_reference), str(self.company_acronym), str(self.company_name), str(self.pcl_actual_cry), str(self.pcl_met), str(self.outperformance_or_underperformance_payment), str(self.forecast_of_total_2020_25_outperformance_or_underperformance_payment)
     
-    def validate(self):
-        if (self.pcl_met not in ['yes', 'no', '-']):
+    def correct_data(self):
+
+# updated_at
+# outcome_performance_type
+# line_description
+# unique_reference
+# unit
+# decimal_places
+# pcl_actual_pry
+# pcl_actual_cry
+# pcl_met
+# outperformance_or_underperformance_payment
+# forecast_of_total_2020_25_outperformance_or_underperformance_payment
+# company_acronym
+# company_name
+# year
+# submission_status
+# excel_user
+# excel_file
+# comment        
+
+
+        if (isinstance(self.pcl_met, (int, float)) and math.isnan(self.pcl_met)):
+            self.pcl_met = None
+            return True
+        if (self.pcl_met.lower() not in ['yes', 'no', '-', None]):
             print("ERROR - data validation error: ", "pcl_met ", "is ", self.pcl_met, " This should be Yes, No or -")
         if (self.pcl_met == '-'):
             self.pcl_met = None
+
+
+
+

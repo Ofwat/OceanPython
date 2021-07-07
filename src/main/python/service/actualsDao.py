@@ -7,7 +7,7 @@ table_name = 'pc_actuals_updates'
 def create_actuals_table():
     schema_name = db.create_schema()
     if (db.table_present(schema_name, table_name)):
-        return
+        return schema_name
 
     print("creating table " + schema_name + '.' + table_name)
     ocean_db_conn = db.sql_server_connection()
@@ -33,13 +33,17 @@ def create_actuals_table():
     ocean_db_conn.commit()
     ocean_db_conn.close()
 
+    return schema_name
+
     
 def insert_to_actuals_table(records_for_db):
+    schema_name = create_actuals_table()
+
     ocean_db_conn = db.sql_server_connection()
     ocean_cursor = ocean_db_conn.cursor()
 
     insert_statement = '''
-        insert ae_generated_sources.pc_actuals_updates (
+        insert ''' + schema_name + '.' + table_name  + ''' (
             updated_at,
             excel_file,
             excel_user,

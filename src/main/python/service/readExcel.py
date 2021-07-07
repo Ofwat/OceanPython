@@ -8,7 +8,7 @@ def upload_data():
     pd.set_option("display.precision", 18)
 
     # Read excel for PR14 and create csv with columns needed
-    df = pd.read_excel(r'../resources/AnnesPR14.xlsx', sheet_name='PC list', usecols="A:DB,DU:DZ,EC:EJ", skiprows=[0])
+    df = pd.read_excel(r'src/main/resources/AnnesPR14.xlsx', sheet_name='PC list', usecols="A:DB,DU:DZ,EC:EJ", skiprows=[0])
     df.columns = ['unique_id', 'company_type', 'company', 'element_name', 'element_acronym', 'outcome', 'pc_ref',
                   'annex',
                   'performance_commitment', 'odi_type', 'odi_form', 'in_period_odi', 'vanilla_odi', 'primary_category',
@@ -193,7 +193,7 @@ def upload_data():
          'isnumeric_outp_payment1_incentive_rate_gbpm_column', 'isnumeric_outp_payment2_incentive_rate_gbpm_column'],axis=1,inplace=True)
 
     # Read excel for PR19 and create csv with columns needed
-    df1 = pd.read_excel(r'../resources/Pauls_latest_PR19.xlsx',
+    df1 = pd.read_excel(r'src/main/resources/Pauls_latest_PR19.xlsx',
                         sheet_name='App1', usecols="A,C:D,F:P,R:Z,AF,AQ:AU,BL:DE", skiprows=[0, 1, 2, 3, 4])
     df1.columns = ['company', 'unique_id', 'outcome', 'pc_ref', 'performance_commitment', 'pc_short_description',
                    'price_control_allocation_water_resources', 'price_control_allocation_water_network_plus',
@@ -327,7 +327,7 @@ def upload_data():
                     'isnumeric_outp_payment_incentive_enhanced_outp_payment_column'],axis=1,inplace=True)
 
     # Read excel for PR14 Submeasures
-    df2 = pd.read_excel(r'../resources/AnnesPR14.xlsx',
+    df2 = pd.read_excel(r'src/main/resources/AnnesPR14.xlsx',
                         sheet_name='Sub-measures', usecols="A:BB,BK,BL,BG:BH,BM:BR", skiprows=[0, 1])
     df2.columns = ['unique_id', 'company_type', 'company', 'element_acronym', 'pc_ref', 'performance_commitment',
                    'odi_type', 'primary_category', 'pc_unit_description', 'starting_level_pr14_fd_2014_15',

@@ -1,10 +1,12 @@
 import pyodbc
 import yaml
+import os
 
 
 def read_config_file():
     # Connect to SQL Server
-    with open("C:/Users/Adam.Dev/.dbt/profiles.yml", "r") as ymlfile:
+    # with open("C:/Users/Adam.Dev/.dbt/profiles.yml", "r") as ymlfile:
+    with open(os.environ['USERPROFILE'] + '/.dbt/profiles.yml', "r") as ymlfile:
         cfg = yaml.safe_load(ymlfile)
     # return cfg["mssql"]
     target = cfg["demo_dbt"]["target"]

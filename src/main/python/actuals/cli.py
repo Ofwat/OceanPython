@@ -1,22 +1,55 @@
 import argparse
+import os
 
 def run():
+
+    print('user dir ', os.environ['USERPROFILE'] + '/.dbt/profiles.yml')
+
+
     parser = argparse.ArgumentParser()
+# type=argparse.FileType('r')
+    parser.add_argument('command',
+                        metavar='command',
+                        action='store',
+                        choices=['PR14base', 'PR19base', 'PR19update'],
+                        help='Select which type of data to process')
 
-    my_parser.add_argument('-a',
+
+    parser.add_argument('-i',
+                       '--input_file',
+                       required=False,
                        action='store',
-                       choices=['pr14base', 'pr19base', 'pr19update'],
-                       required=True,
-                       help='set the user choice to head or tail')
+                       type=str,
+                       dest='input_file')
+    # can we use file or directory?
 
-    my_parser.add_argument('-v',
-                       '--verbosity',
+    parser.add_argument('-c',
+                       '--comment',
+                       required=False,
                        action='store',
-                       type=int,
-                       dest='my_verbosity_level')
+                       type=str,
+                       dest='comment')
 
-    args = my_parser.parse_args()
+    parser.add_argument('-u',
+                       '--user',
+                       required=False,
+                       action='store',
+                       type=str,
+                       dest='data')
+
+    parser.add_argument('-l',
+                       '--log_file',
+                       required=False,
+                       action='store',
+                       type=str,
+                       dest='log_file')
+
+    args = parser.parse_args()
     print(vars(args))
 
-if __name == '__main__':
+  
+        
+    
+
+if __name__ == '__main__':
     run()
