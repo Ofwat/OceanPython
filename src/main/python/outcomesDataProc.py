@@ -41,18 +41,20 @@ def main():
                        action='store_true',
                        dest='test_run')
 
-    args = parser.parse_args()
+    cli_args = parser.parse_args()
     print(vars(args))
 
     if ('PR14base' == args.command):
-        readExcel.upload_data()
+        readExcel.upload_data_PR14_base(cli_args)
+    elif ('PR14submeasures' == args.command):
+        readExcel.upload_data_PR14_submeasues(cli_args)
     elif ('PR19base' == args.command):
-        readExcel.upload_data()
+        readExcel.upload_data_PR19_base(cli_args)
     elif ('PR19update' == args.command):
         if (None == args.comment):
             print('error: the following arguments are required: -c/--comment')
             exit()
-        actualsService.process_actuals(args)
+        actualsService.process_actuals(cli_args)
 
         
 if __name__ == "__main__":
