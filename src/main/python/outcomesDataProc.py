@@ -9,7 +9,7 @@ def main():
     parser.add_argument('command',
                         metavar='command',
                         action='store',
-                        choices=['PR14base', 'PR19base', 'PR19update'],
+                        choices=['PR14base', 'PR14submeasures', 'PR19base', 'PR19update'],
                         help='Select which type of data to process')
 
     parser.add_argument('--input_file',
