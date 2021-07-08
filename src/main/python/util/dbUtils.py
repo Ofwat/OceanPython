@@ -8,8 +8,8 @@ def read_config_file():
     with open(os.environ['USERPROFILE'] + '/.dbt/profiles.yml', "r") as ymlfile:
         cfg = yaml.safe_load(ymlfile)
 
-    target = cfg["demo_dbt"]["target"]
-    return cfg["demo_dbt"]["outputs"][target]
+    target = cfg["Ocean"]["target"]
+    return cfg["Ocean"]["outputs"][target]
 
 
 def sql_server_connection():
