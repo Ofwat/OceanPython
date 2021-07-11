@@ -31,7 +31,7 @@ def parse_cli():
                        dest='to_target')
 
     cli_args = parser.parse_args()
-    print(vars(cli_args))
+    # print(vars(cli_args))
     return cli_args
 
 def main():

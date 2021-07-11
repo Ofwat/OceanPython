@@ -1,7 +1,7 @@
 @echo off
 
 echo .
-echo loadPR14base.bat
+echo loadPR14submeasures.bat
 echo Ensuring we are in the batch directory.
 if NOT %CD%\ == %~dp0 (
     echo Changing to dir: %~dp0
@@ -16,8 +16,8 @@ echo Using the dbt power bi settings.
 python.exe .\tools\replaceDBTTarget.py --from_target dev --to_target %DBT_TARGET%
 
 echo Loading data from Excel to DB.
-echo running ... python.exe .\outcomesDataProc.py PR14base --user adam.edgar --comment abc --input_file "..\resources\AnnesPR14.xlsx" --test
-python.exe .\outcomesDataProc.py PR14base --user adam.edgar --comment abc --input_file "..\resources\AnnesPR14.xlsx" --test
+echo running ... python.exe .\outcomesDataProc.py PR14submeasures --user adam.edgar --comment abc --input_file "..\resources\AnnesPR14.xlsx" --test
+python.exe .\outcomesDataProc.py PR14submeasures --user adam.edgar --comment abc --input_file "..\resources\AnnesPR14.xlsx" --test
 
 echo run dbt 
 cd %DBT_DIR%
@@ -32,6 +32,4 @@ echo Switching back to the dbt dev settings
 python.exe .\tools\replaceDBTTarget.py --from_target %DBT_TARGET% --to_target dev
 
 echo Changing back to the batch dir
-@echo on
 cd %~dp0
-

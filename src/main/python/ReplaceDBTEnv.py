@@ -1,7 +1,0 @@
-fin = open("C:/Users/adam.dev/.dbt/profiles.yml", "rt")
-data = fin.read()
-data = data.replace('target: dev', 'target: power_bi_env')
-fin.close()
-fin = open("C:/Users/adam.dev/.dbt/profiles.yml", "wt")
-fin.write(data)
-fin.close()
