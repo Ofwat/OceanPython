@@ -16,8 +16,8 @@ echo Using the dbt power bi settings.
 python.exe .\tools\replaceDBTTarget.py --from_target dev --to_target %DBT_TARGET%
 
 echo Loading data from Excel to DB.
-echo running ... python.exe .\outcomesDataProc.py PR14base --user adam.edgar --comment abc --input_file "..\resources\AnnesPR14.xlsx" --test
-python.exe .\outcomesDataProc.py PR14base --user adam.edgar --comment abc --input_file "..\resources\AnnesPR14.xlsx" --test
+echo running ... python.exe .\outcomesDataProc.py PR14base --user "ken.macdonald" --comment "Initial load" --input_file "..\resources\AnnesPR14.xlsx"
+python.exe .\outcomesDataProc.py PR14base --user "ken.macdonald" --comment "Initial load" --input_file "..\resources\AnnesPR14.xlsx"
 
 echo run dbt 
 cd %DBT_DIR%

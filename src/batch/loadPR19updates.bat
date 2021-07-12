@@ -17,8 +17,9 @@ python.exe .\tools\replaceDBTTarget.py --from_target dev --to_target %DBT_TARGET
 
 echo Loading data from Excel to DB.
 for %%f in (..\resources\updates\*.xlsx) do (
-    echo running ... python.exe .\outcomesDataProc.py PR19update --user adam.edgar --comment abc --input_file "%%f" --test
-    python.exe .\outcomesDataProc.py PR19update --user adam.edgar --comment abc --input_file "%%f" --test
+    echo running ... python.exe .\outcomesDataProc.py PR19update --user "ken.macdonald" --comment "Initial APR load" --input_file "%%f" 
+    python.exe .\outcomesDataProc.py PR19update --user "ken.macdonald" --comment "Initial APR load" --input_file "%%f" 
+    move /Y "%%f" ..\resources\updates\loaded\
 )
 
 echo running dbt 

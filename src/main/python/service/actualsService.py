@@ -7,9 +7,6 @@ from dao import actualsDao
 import numpy as np
 
 
-comment = 'Initial APR load'
-excel_user = 'Fred'
-
 submission_status_actual = 'Actual'
 submission_status_past_performance = 'Past performance'
 
@@ -111,15 +108,15 @@ def print_common_data(common_data):
     print(common_data.excel_file)
     print(common_data.comment)
 
-def record_batch_data(excel_sheet, common_data):
+def record_batch_data(excel_sheet, excel_user, comment, common_data):
     common_data.excel_user = excel_user
     common_data.excel_file = excel_sheet
     common_data.comment = comment
 
-def read_sheets(excel_sheet):
+def read_sheets(excel_sheet, excel_user, comment):
     # Read sheets
     common_data = PCCommonData()
-    record_batch_data(excel_sheet, common_data)
+    record_batch_data(excel_sheet, excel_user, comment, common_data)
     companies = read_validation_sheet(excel_sheet)
     read_validation_summary_sheet(excel_sheet, common_data, companies)
     print_common_data(common_data)
@@ -144,7 +141,7 @@ def write_to_database(pc_records):
     
 
 def process_actuals(cli_args):
-    pc_records = read_sheets(cli_args.input_file)
+    pc_records = read_sheets(cli_args.input_file, cli_args.user, cli_args.comment)
     if (not cli_args.test_run):
         write_to_database(pc_records)
 
