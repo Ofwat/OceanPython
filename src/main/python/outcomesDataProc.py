@@ -3,6 +3,7 @@ from util import dbUtils as db
 from service import pr14Service
 from service import pr14SubmeasureService
 from service import pr19Service
+from service import pr19App1bService
 import argparse
 
 def main():
@@ -10,7 +11,7 @@ def main():
     parser.add_argument('command',
                         metavar='command',
                         action='store',
-                        choices=['PR14base', 'PR14submeasures', 'PR19base', 'PR19update'],
+                        choices=['PR14base', 'PR14submeasures', 'PR19base', 'PR19update','PR19App1b'],
                         help='Select which type of data to process')
 
     parser.add_argument('--input_file',
@@ -51,6 +52,8 @@ def main():
         pr14SubmeasureService.upload_data_PR14_submeasues(cli_args)
     elif ('PR19base' == cli_args.command):
         pr19Service.upload_data_PR19_base(cli_args)
+    elif ('PR19App1b' == cli_args.command):
+        pr19App1bService.upload_data_PR19_App1b_base(cli_args)
     elif ('PR19update' == cli_args.command):
         if (None == cli_args.comment):
             print('error: the following arguments are required: -c/--comment')

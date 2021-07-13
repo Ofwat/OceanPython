@@ -1,14 +1,13 @@
 import pandas as pd
 from util import validations
-from dao import pr19Dao
+from dao import pr19App1bDao
 
-def upload_data_PR19_base(cli_args):
+def upload_data_PR19_App1b_base(cli_args):
     input_file_name = cli_args.input_file
     pd.set_option("display.precision", 18)
 
-    df1 = pd.read_excel(input_file_name,
-                        sheet_name='App1', usecols="A,C:D,F:P,R:Z,AF,AQ:AU,BL:DE", skiprows=[0, 1, 2, 3, 4])
-    df1.columns = ['company', 'unique_id', 'outcome', 'pc_ref', 'performance_commitment', 'pc_short_description',
+    df3 = pd.read_excel(input_file_name, sheet_name='App1b', usecols="A,U:V,X:AH,AJ:AR,AX,BI:BM,CD:DW", skiprows=[0,1,2,3,4,5,6,7])
+    df3.columns = ['company', 'unique_id', 'outcome', 'pc_ref', 'performance_commitment', 'pc_short_description',
                    'price_control_allocation_water_resources', 'price_control_allocation_water_network_plus',
                    'price_control_allocation_wastewater_network_plus', 'price_control_allocation_bioresources_sludge',
                    'price_control_allocation_residential_retail', 'price_control_allocation_business_retail',
@@ -45,7 +44,7 @@ def upload_data_PR19_base(cli_args):
                    'outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply_column',
                    'outp_payment_incentive_enhanced_outp_payment_column', 'standard_odi_cal', 'standard_odi_operand',
                    'standard_odi_operand_note']
-    df1 = df1.astype({'company': 'object', 'unique_id': 'object', 'outcome': 'object', 'pc_ref': 'object',
+    df3 = df3.astype({'company': 'object', 'unique_id': 'object', 'outcome': 'object', 'pc_ref': 'object',
                       'performance_commitment': 'object', 'pc_short_description': 'object',
                       'price_control_allocation_water_resources': 'float64',
                       'price_control_allocation_water_network_plus': 'float64',
@@ -95,16 +94,16 @@ def upload_data_PR19_base(cli_args):
                       'outp_payment_incentive_enhanced_outp_payment_column': 'object', 'standard_odi_cal': 'object',
                       'standard_odi_operand': 'object',
                       'standard_odi_operand_note': 'object'})
-    listofPR19columns = []
-    for column in df1:
-        listofPR19columns.append(column)
-    for j in listofPR19columns:
-        df1[j] = validations.replace_spaces(df1, j)
-        df1[j] = validations.replace_dashes_with_nan(df1, j)
-        df1[j] = validations.replace_null_with_None(df1, j)
-        if j in ['scheme_specific_factor', 'asset_health', 'nep', 'aim']:
-            df1[j] = validations.replace_yes_with_true(df1, j)
-        if j in ['underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply_column',
+    listofApp1bcolumns = []
+    for column in df3:
+        listofApp1bcolumns.append(column)
+    for m in listofApp1bcolumns:
+        df3[m] = validations.replace_spaces(df3, m)
+        df3[m] = validations.replace_dashes_with_nan(df3, m)
+        df3[m] = validations.replace_null_with_None(df3, m)
+        if m in ['scheme_specific_factor', 'asset_health', 'nep', 'aim']:
+            df3[m] = validations.replace_yes_with_true(df3, m)
+        if m in ['underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply_column',
                  'underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply_column',
                  'underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply_column',
                  'underp_payment_incentive_enhanced_underp_payment_column',
@@ -112,8 +111,8 @@ def upload_data_PR19_base(cli_args):
                  'outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply_column',
                  'outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply_column',
                  'outp_payment_incentive_enhanced_outp_payment_column']:
-            validations.is_numeric_and_only_numeric(df1, j)
-    df1 = df1.rename(columns={
+            validations.is_numeric_and_only_numeric(df3, m)
+    df3 = df3.rename(columns={
         'onlynumeric_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply_column': 'underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply',
         'onlynumeric_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply_column': 'underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply',
         'onlynumeric_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply_column': 'underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply',
@@ -131,7 +130,7 @@ def upload_data_PR19_base(cli_args):
         'notes_outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply_column': 'notes_outp_payment_incentive_standard_outp_payment2_tier1_where_tiers_apply',
         'notes_outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply_column': 'notes_outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply',
         'notes_outp_payment_incentive_enhanced_outp_payment_column': 'notes_outp_payment_incentive_enhanced_outp_payment'})
-    df1.drop(columns=['isnumeric_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply_column',
+    df3.drop(columns=['isnumeric_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply_column',
                       'isnumeric_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply_column',
                       'isnumeric_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply_column',
                       'isnumeric_underp_payment_incentive_enhanced_underp_payment_column',
@@ -141,5 +140,4 @@ def upload_data_PR19_base(cli_args):
                       'isnumeric_outp_payment_incentive_enhanced_outp_payment_column'], axis=1, inplace=True)
 
     if (not cli_args.test_run):
-        pr19Dao.insert_pr19_data_in_table(df1)
-        
+        pr19App1bDao.insert_pr19_App1b_data_in_table(df3)
