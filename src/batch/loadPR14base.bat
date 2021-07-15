@@ -1,37 +1,39 @@
 @echo off
 
 echo .
-echo loadPR14base.bat
-echo Ensuring we are in the batch directory.
+echo  %date% %time% running loadPR14base.bat ...
+echo  %date% %time% Ensuring we are in the batch directory.
 if NOT %CD%\ == %~dp0 (
-    echo Changing to dir: %~dp0
+    echo  %date% %time% Changing to dir: %~dp0
     %~d0
     cd %~dp0
 )
 
-echo Changing to the main python dir.
+echo  %date% %time% Changing to the main python dir.
 cd ..\main\python
 
-echo Using the dbt power bi settings.
+echo  %date% %time% Using the dbt power bi settings.
 python.exe .\tools\replaceDBTTarget.py --from_target dev --to_target %DBT_TARGET%
 
-echo Loading data from Excel to DB.
-echo running ... python.exe .\outcomesDataProc.py PR14base --user "ken.macdonald" --comment "Initial load" --input_file "..\resources\AnnesPR14.xlsx"
+echo  %date% %time% Loading data from Excel to DB.
+echo  %date% %time% running ... python.exe .\outcomesDataProc.py PR14base --user "ken.macdonald" --comment "Initial load" --input_file "..\resources\AnnesPR14.xlsx"
 python.exe .\outcomesDataProc.py PR14base --user "ken.macdonald" --comment "Initial load" --input_file "..\resources\AnnesPR14.xlsx"
 
-echo run dbt 
+echo  %date% %time% run dbt 
 cd %DBT_DIR%
+dbt seed
 dbt run
 
-echo Changing back to the batch dir
+echo  %date% %time% Changing back to the batch dir
 cd %~dp0
-echo Changing to the main python dir.
+echo  %date% %time% Changing to the main python dir.
 cd ..\main\python
 
-echo Switching back to the dbt dev settings
+echo  %date% %time% Switching back to the dbt dev settings
 python.exe .\tools\replaceDBTTarget.py --from_target %DBT_TARGET% --to_target dev
 
-echo Changing back to the batch dir
-@echo on
+echo  %date% %time% Changing back to the batch dir
+@echo  %date% %time% on
 cd %~dp0
 
+echo  %date% %time% completed loadPR14base.bat

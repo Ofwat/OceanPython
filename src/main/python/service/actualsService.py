@@ -103,7 +103,7 @@ def print_common_data(common_data):
     print("common_data")
     print(common_data.year)
     print(common_data.company_acronym)
-    print(common_data.company_name)
+    # print(common_data.company_name)
     print(common_data.excel_user)
     print(common_data.excel_file)
     print(common_data.comment)

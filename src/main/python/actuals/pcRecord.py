@@ -72,8 +72,8 @@ class PCRecord:
         if (isinstance(self.pcl_met, (int, float)) and math.isnan(self.pcl_met)):
             self.pcl_met = None
             return True
-        if (self.pcl_met.lower() not in ['yes', 'no', '-', None]):
-            print("ERROR - data validation error: ", "pcl_met ", "is ", self.pcl_met, " This should be Yes, No or -")
+        if (self.pcl_met.lower().strip() not in ['yes', 'no', '-', None]):
+            print("ERROR - data validation error: ", "pcl_met ", "is |", self.pcl_met, "| This should be Yes, No or -")
         if (self.pcl_met == '-'):
             self.pcl_met = None
 
