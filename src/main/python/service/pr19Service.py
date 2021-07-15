@@ -141,5 +141,5 @@ def upload_data_PR19_base(cli_args):
                       'isnumeric_outp_payment_incentive_enhanced_outp_payment_column'], axis=1, inplace=True)
 
     if (not cli_args.test_run):
-        pr19Dao.insert_pr19_submeasure_data_in_table(df1)
+        pr19Dao.insert_pr19_data_in_table(df1)
         

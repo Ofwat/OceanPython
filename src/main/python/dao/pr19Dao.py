@@ -1,6 +1,6 @@
 from util import dbUtils
 
-def insert_pr19_submeasure_data_in_table(df1):
+def insert_pr19_data_in_table(df1):
     conn = dbUtils.sql_server_connection()
     schemanameused = dbUtils.create_schema()
     cursor = conn.cursor()
