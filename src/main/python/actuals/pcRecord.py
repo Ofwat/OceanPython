@@ -45,38 +45,15 @@ class PCRecord:
         print("comment", "=", self.comment)
 
     def data_for_db(self):
-        return self.updated_at, str(self.excel_file), str(self.excel_user), str(self.comment), 'AMP7', str(self.year), str(self.submission_status), str(self.unique_reference), str(self.company_acronym), str(self.company_name), str(self.pcl_actual_cry), str(self.pcl_met), str(self.outperformance_or_underperformance_payment), str(self.forecast_of_total_2020_25_outperformance_or_underperformance_payment)
+        # return self.updated_at, str(self.excel_file), str(self.excel_user), str(self.comment), 'AMP7', str(self.year), str(self.submission_status), str(self.unique_reference), str(self.company_acronym), str(self.company_name), str(self.pcl_actual_cry), str(self.pcl_met), str(self.outperformance_or_underperformance_payment), str(self.forecast_of_total_2020_25_outperformance_or_underperformance_payment)
+        return self.updated_at, self.excel_file, self.excel_user, self.comment, 'AMP7', self.year, self.submission_status, self.unique_reference, self.company_acronym, self.company_name, self.pcl_actual_cry, self.pcl_met, self.outperformance_or_underperformance_payment, self.forecast_of_total_2020_25_outperformance_or_underperformance_payment
     
     def correct_data(self):
-
-# updated_at
-# outcome_performance_type
-# line_description
-# unique_reference
-# unit
-# decimal_places
-# pcl_actual_pry
-# pcl_actual_cry
-# pcl_met
-# outperformance_or_underperformance_payment
-# forecast_of_total_2020_25_outperformance_or_underperformance_payment
-# company_acronym
-# company_name
-# year
-# submission_status
-# excel_user
-# excel_file
-# comment        
-
-
-        if (isinstance(self.pcl_met, (int, float)) and math.isnan(self.pcl_met)):
-            self.pcl_met = None
-            return True
-        if (self.pcl_met.lower().strip() not in ['yes', 'no', '-', None]):
-            print("ERROR - data validation error: ", "pcl_met ", "is |", self.pcl_met, "| This should be Yes, No or -")
+        if (self.pcl_met):
+            if (self.pcl_met.lower().strip() not in ['yes', 'no', '-', None]):
+                print("ERROR - data validation error: ", "pcl_met ", "is |", self.pcl_met, "| This should be Yes, No or -")
         if (self.pcl_met == '-'):
             self.pcl_met = None
-
 
 
 

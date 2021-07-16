@@ -5,6 +5,7 @@ from actuals.pcRecord import PCRecord
 from actuals.pcCommonData import PCCommonData
 from dao import actualsDao
 import numpy as np
+from util import validations
 
 
 submission_status_actual = 'Actual'
@@ -44,7 +45,15 @@ def read_pc_sheet(excel_sheet, pc_sheet, outcome_performance_type, pc_records, c
     # pc_data = select_all_pcs(data_area_of_all_pcs)
     pc_data = select_bespoke_pcs(pc_sheet, data_area_of_all_pcs)
     # print(pc_data)
-    
+
+# validation
+    list_of_cols = []
+    for column in pc_data:
+        list_of_cols.append(column)
+    for i in list_of_cols:
+        pc_data[i] = validations.replace_null_with_None(pc_data, i)
+# end validation
+
     for i in range(len(pc_data)):
         if ("3A" == pc_sheet or "3B" == pc_sheet):
             pc_record = PCRecord(spreadsheet_updated, outcome_performance_type, pc_data.iloc[i, 0], pc_data.iloc[i, 1], pc_data.iloc[i, 2], pc_data.iloc[i, 3], pc_data.iloc[i, 4], pc_data.iloc[i, 5], pc_data.iloc[i, 6], pc_data.iloc[i, 7], pc_data.iloc[i, 8], common_data.company_acronym, common_data.company_name, common_data.year, submission_status_actual, common_data.excel_user, common_data.excel_file, common_data.comment)
