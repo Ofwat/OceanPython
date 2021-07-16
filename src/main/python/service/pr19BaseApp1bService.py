@@ -1,6 +1,6 @@
 import pandas as pd
 from util import validations
-from dao import pr19App1bDao
+from dao import pr19BaseApp1bDao
 
 def upload_data_PR19_App1b_base(cli_args):
     input_file_name = cli_args.input_file
@@ -140,4 +140,4 @@ def upload_data_PR19_App1b_base(cli_args):
                       'isnumeric_outp_payment_incentive_enhanced_outp_payment_column'], axis=1, inplace=True)
 
     if (not cli_args.test_run):
-        pr19App1bDao.insert_pr19_App1b_data_in_table(df3)
+        pr19BaseApp1bDao.insert_pr19_App1b_data_in_table(df3)
