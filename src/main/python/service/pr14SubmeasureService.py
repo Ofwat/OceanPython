@@ -2,6 +2,7 @@ import pandas as pd
 from util import validations
 from dao import pr14SubmeasureDao
 
+
 def upload_data_PR14_submeasues(cli_args):
     input_file_name = cli_args.input_file
     pd.set_option("display.precision", 18)
@@ -103,5 +104,5 @@ def upload_data_PR14_submeasues(cli_args):
         if k == 'company':
             df2[k] = validations.change_company_to_UUW(df2)
 
-    if (not cli_args.test_run):
+    if not cli_args.test_run:
         pr14SubmeasureDao.insert_pr14_submeasure_data_in_table(df2)

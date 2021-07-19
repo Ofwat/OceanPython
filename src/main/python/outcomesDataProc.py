@@ -1,5 +1,4 @@
 from service import actualsService
-from util import dbUtils as db
 from service import pr14Service
 from service import pr14SubmeasureService
 from service import pr19Service
@@ -43,7 +42,6 @@ def main():
                        dest='test_run')
 
     cli_args = parser.parse_args()
-    # print(vars(args))
 
     if ('PR14base' == cli_args.command):
         pr14Service.upload_data_PR14_base(cli_args)

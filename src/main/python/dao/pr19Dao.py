@@ -1,15 +1,13 @@
 from util import dbUtils
 
+
 def insert_pr19_data_in_table(df1):
     conn = dbUtils.sql_server_connection()
-    schemanameused = dbUtils.create_schema()
+    schemanameused = dbUtils.schema_present()
+    queryfortablecheck = dbUtils.table_present(schemanameused, 'PR19FinalCSVcreatedbyPython')
     cursor = conn.cursor()
 
-    cursor.execute(
-        "SELECT * FROM information_schema.tables where table_schema ='" + schemanameused + "' and table_name = 'PR19FinalCSVcreatedbyPython'")
-    queryfortablecheck = cursor.fetchone()
-    if queryfortablecheck is not None:
-        print("Table PR19FinalCSVcreatedbyPython is existing")
+    if queryfortablecheck is True:
         cursor.execute("DROP TABLE " + schemanameused + ".PR19FinalCSVcreatedbyPython")
         print("Dropped the existing PR19FinalCSVcreatedbyPython table")
         print("Creating new PR19FinalCSVcreatedbyPython table")

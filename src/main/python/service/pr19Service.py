@@ -2,6 +2,7 @@ import pandas as pd
 from util import validations
 from dao import pr19Dao
 
+
 def upload_data_PR19_base(cli_args):
     input_file_name = cli_args.input_file
     pd.set_option("display.precision", 18)
@@ -124,7 +125,6 @@ def upload_data_PR19_base(cli_args):
         'onlynumeric_outp_payment_incentive_enhanced_outp_payment_column': 'outp_payment_incentive_enhanced_outp_payment',
         'notes_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply_column': 'notes_underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply',
         'notes_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply_column': 'notes_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply',
-        'onlynumeric_underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply_column': 'underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply',
         'notes_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply_column': 'notes_underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply',
         'notes_underp_payment_incentive_enhanced_underp_payment_column': 'notes_underp_payment_incentive_enhanced_underp_payment',
         'notes_outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply_column': 'notes_outp_payment_incentive_standard_outp_payment1_tier2_where_tiers_apply',
@@ -140,6 +140,5 @@ def upload_data_PR19_base(cli_args):
                       'isnumeric_outp_payment_incentive_standard_outp_payment3_tier3_where_tiers_apply_column',
                       'isnumeric_outp_payment_incentive_enhanced_outp_payment_column'], axis=1, inplace=True)
 
-    if (not cli_args.test_run):
+    if not cli_args.test_run:
         pr19Dao.insert_pr19_data_in_table(df1)
-        

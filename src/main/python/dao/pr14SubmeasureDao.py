@@ -1,15 +1,13 @@
 from util import dbUtils
 
+
 def insert_pr14_submeasure_data_in_table(df2):
     conn = dbUtils.sql_server_connection()
-    schemanameused = dbUtils.create_schema()
+    schemanameused = dbUtils.schema_present()
+    queryfortablecheck = dbUtils.table_present(schemanameused, 'PR14SubmeasureFinalCSVcreatedbyPython')
     cursor = conn.cursor()
 
-    cursor.execute(
-        "SELECT * FROM information_schema.tables where table_schema ='" + schemanameused + "' and table_name = 'PR14SubmeasureFinalCSVcreatedbyPython'")
-    queryfortablecheck = cursor.fetchone()
-    if queryfortablecheck is not None:
-        print("Table PR14SubmeasureFinalCSVcreatedbyPython is existing")
+    if queryfortablecheck is True:
         cursor.execute("DROP TABLE " + schemanameused + ".PR14SubmeasureFinalCSVcreatedbyPython")
         print("Dropped the existing PR14SubmeasureFinalCSVcreatedbyPython table")
         print("Creating new PR14SubmeasureFinalCSVcreatedbyPython table")

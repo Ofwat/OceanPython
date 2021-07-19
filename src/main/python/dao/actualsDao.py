@@ -1,19 +1,18 @@
-import pyodbc
-import pandas as pd
 from util import dbUtils as db
 
 table_name = 'pc_actuals_updates'
 
+
 def create_actuals_table():
-    schema_name = db.create_schema()
-    if (db.table_present(schema_name, table_name)):
+    schema_name = db.schema_present()
+    if db.table_present(schema_name, table_name):
         return schema_name
 
     print("creating table " + schema_name + '.' + table_name)
     ocean_db_conn = db.sql_server_connection()
     ocean_cursor = ocean_db_conn.cursor()
     ocean_cursor.execute('''
-        create table ''' + schema_name + '.' + table_name  + ''' (
+        create table ''' + schema_name + '.' + table_name + ''' (
             updated_at datetime,
             excel_file nvarchar(max),
             excel_user nvarchar(max),
@@ -35,7 +34,7 @@ def create_actuals_table():
 
     return schema_name
 
-    
+
 def insert_to_actuals_table(records_for_db):
     schema_name = create_actuals_table()
 
@@ -43,7 +42,7 @@ def insert_to_actuals_table(records_for_db):
     ocean_cursor = ocean_db_conn.cursor()
 
     insert_statement = '''
-        insert ''' + schema_name + '.' + table_name  + ''' (
+        insert ''' + schema_name + '.' + table_name + ''' (
             updated_at,
             excel_file,
             excel_user,
@@ -64,5 +63,3 @@ def insert_to_actuals_table(records_for_db):
     ocean_cursor.executemany(insert_statement, records_for_db)
     ocean_db_conn.commit()
     ocean_db_conn.close()
-
-
