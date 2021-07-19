@@ -1,6 +1,10 @@
 import numpy as np
 
 
+def replace_Noneword_with_None(dataframe, iteratorvariable):
+    return dataframe[iteratorvariable].replace('None', np.nan, regex=True)
+
+
 def replace_spaces(dataframe, iteratorvariable):
     return dataframe[iteratorvariable].replace(r'^\s*$', np.nan, regex=True)
 

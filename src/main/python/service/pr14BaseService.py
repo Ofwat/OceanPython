@@ -2,6 +2,7 @@ import pandas as pd
 from util import validations
 from dao import pr14BaseDao
 
+
 def upload_data_PR14_base(cli_args):
     input_file_name = cli_args.input_file
     pd.set_option("display.precision", 18)
@@ -186,10 +187,12 @@ def upload_data_PR14_base(cli_args):
                  'notes_outp_payment1_incentive_rate_gbpm_column': 'notes_outp_payment1_incentive_rate_gbpm',
                  'notes_outp_payment2_incentive_rate_gbpm_column': 'notes_outp_payment2_incentive_rate_gbpm',
                  })
-    df.drop(columns = ['isnumeric_underp_payment1_incentive_rate_gbpm_column', 'isnumeric_underp_payment2_incentive_rate_gbpm_column',
-         'isnumeric_underp_payment3_incentive_rate_gbpm_column', 'isnumeric_underp_payment4_incentive_rate_gbpm_column',
-         'isnumeric_outp_payment1_incentive_rate_gbpm_column', 'isnumeric_outp_payment2_incentive_rate_gbpm_column'],axis=1,inplace=True)
+    df.drop(columns=['isnumeric_underp_payment1_incentive_rate_gbpm_column',
+                     'isnumeric_underp_payment2_incentive_rate_gbpm_column',
+                     'isnumeric_underp_payment3_incentive_rate_gbpm_column',
+                     'isnumeric_underp_payment4_incentive_rate_gbpm_column',
+                     'isnumeric_outp_payment1_incentive_rate_gbpm_column',
+                     'isnumeric_outp_payment2_incentive_rate_gbpm_column'], axis=1, inplace=True)
 
-    if (not cli_args.test_run):
+    if not cli_args.test_run:
         pr14BaseDao.insert_pr14_data_in_table(df)
-        

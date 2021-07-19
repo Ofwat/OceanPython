@@ -140,4 +140,4 @@ def upload_data_PR19_App1b_base(cli_args):
                       'isnumeric_outp_payment_incentive_enhanced_outp_payment_column'], axis=1, inplace=True)
 
     if (not cli_args.test_run):
-        pr19BaseApp1bDao.insert_pr19_App1b_data_in_table(df3)
+        pr19BaseApp1bDao.insert_pr19_app1b_data_in_table(df3)
