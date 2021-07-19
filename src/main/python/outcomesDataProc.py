@@ -4,8 +4,7 @@ from service import pr14BaseService
 from service import pr14BaseSubmeasureService
 from service import pr19BaseApp1Service
 from service import pr19BaseApp1bService
-from service import pr19UpdatingApp1Service
-from service import pr19UpdatingApp1bService
+
 import argparse
 
 
@@ -14,8 +13,7 @@ def main():
     parser.add_argument('command',
                         metavar='command',
                         action='store',
-                        choices=['PR14base', 'PR14basesubmeasures', 'PR19baseapp1', 'PR19actualupdate', 'PR19baseapp1b',
-                                 'PR19updatingapp1', 'PR19updatingapp1b'],
+                        choices=['PR14base', 'PR14basesubmeasures', 'PR19baseapp1', 'PR19actualupdate', 'PR19baseapp1b'],
                         help='Select which type of data to process')
 
     parser.add_argument('--input_file',
@@ -58,10 +56,6 @@ def main():
         pr19BaseApp1Service.upload_data_PR19_base(cli_args)
     elif ('PR19baseapp1b' == cli_args.command):
         pr19BaseApp1bService.upload_data_PR19_App1b_base(cli_args)
-    elif ('PR19updatingapp1' == cli_args.command):
-        pr19UpdatingApp1Service.upload_data_PR19_actauls_app1(cli_args)
-    elif ('PR19updatingapp1b' == cli_args.command):
-        pr19UpdatingApp1bService.upload_data_PR19_actauls_app1b(cli_args)
     elif ('PR19actualupdate' == cli_args.command):
         if (None == cli_args.comment):
             print('error: the following arguments are required: -c/--comment')
