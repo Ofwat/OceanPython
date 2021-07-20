@@ -23,7 +23,7 @@ def create_actuals_table():
             unique_id nvarchar(max),
             company_acronym varchar(50),
             company_name varchar(50),
-            pcl nvarchar(max),
+            pcl float,
             pcl_met nvarchar(max),
             outperformance_or_underperformance_payment nvarchar(max),
             forecast_of_total_2020_25_outperformance_or_underperformance_payment nvarchar(max)
