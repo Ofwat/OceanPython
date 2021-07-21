@@ -10,7 +10,10 @@ class PCRecord:
         self.unique_reference = unique_reference
         self.unit = unit
         self.decimal_places = decimal_places
-        self.pcl_actual_pry = pcl_actual_pry
+        if(None == pcl_actual_pry):
+            self.pcl_actual_pry = pcl_actual_pry
+        else:
+            self.pcl_actual_pry = str(pcl_actual_pry)
         self.pcl_actual_cry = pcl_actual_cry
         self.pcl_met = pcl_met
         self.outperformance_or_underperformance_payment = outperformance_or_underperformance_payment
@@ -46,8 +49,19 @@ class PCRecord:
         print("comment", "=", self.comment)
 
     def data_for_db(self):
-        # return self.updated_at, str(self.excel_file), str(self.excel_user), str(self.comment), 'AMP7', str(self.year), str(self.submission_status), str(self.unique_reference), str(self.company_acronym), str(self.company_name), str(self.pcl_actual_cry), str(self.pcl_met), str(self.outperformance_or_underperformance_payment), str(self.forecast_of_total_2020_25_outperformance_or_underperformance_payment)
-        return self.updated_at, self.excel_file, self.excel_user, self.comment, 'AMP7', self.year, self.submission_status, self.unique_reference, self.company_acronym, self.company_name, self.pcl_actual_cry, self.pcl_met, self.outperformance_or_underperformance_payment, self.forecast_of_total_2020_25_outperformance_or_underperformance_payment
+        basic_tuple = self.updated_at, str(self.excel_file), str(self.excel_user), str(self.comment), 'AMP7', str(self.year), str(self.submission_status), str(self.unique_reference), str(self.company_acronym), str(self.company_name), str(self.pcl_actual_cry), str(self.pcl_met), str(self.outperformance_or_underperformance_payment), str(self.forecast_of_total_2020_25_outperformance_or_underperformance_payment)
+        if 'None' in basic_tuple:
+            list_of_tuple  = list(basic_tuple)
+            new_list_to_supply = []
+            for value in list_of_tuple:
+                if value == 'None':
+                    value = None
+                new_list_to_supply.append(value)
+            new_tuple = tuple(new_list_to_supply)
+            return new_tuple
+        else:
+            return basic_tuple
+        # return self.updated_at, self.excel_file, self.excel_user, self.comment, 'AMP7', self.year, self.submission_status, self.unique_reference, self.company_acronym, self.company_name, self.pcl_actual_cry, self.pcl_met, self.outperformance_or_underperformance_payment, self.forecast_of_total_2020_25_outperformance_or_underperformance_payment
 
     def correct_data(self):
         if self.pcl_met:
