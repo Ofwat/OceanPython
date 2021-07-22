@@ -31,7 +31,7 @@ def is_numeric_and_only_numeric(dataframe, iteratorvariable):
                                                             dataframe[iteratorvariable], None)
     na_mask = dataframe['onlynumeric_' + iteratorvariable].notnull()
     dataframe.loc[na_mask, 'onlynumeric_' + iteratorvariable] = dataframe.loc[
-        na_mask, 'onlynumeric_' + iteratorvariable].astype(float).round(18)
+        na_mask, 'onlynumeric_' + iteratorvariable].astype(float).round(16)
     dataframe['notes_' + iteratorvariable] = ''
     dataframe['notes_' + iteratorvariable] = np.where(dataframe['isnumeric_' + iteratorvariable] == False,
                                                                 dataframe[iteratorvariable], None)

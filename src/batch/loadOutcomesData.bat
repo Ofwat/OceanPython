@@ -6,9 +6,8 @@ echo .
 echo %date% %time% running loadOutcomesData.bat ...
 
 @REM SET DBT_TARGET=dev
-SET DBT_TARGET=power_bi
-SET DBT_DIR=\dbt\demo_dbt
-SET UPDATE_AUTHORISED_BY="ken.macdonald"
+SET DBT_TARGET=pbi
+SET DBT_DIR=C:\Users\Niyati.Wawre\Ocean
 
 echo %date% %time% Ensuring we are in the batch directory.
 if NOT %CD%\ == %~dp0 (
@@ -17,21 +16,23 @@ if NOT %CD%\ == %~dp0 (
     cd %~dp0
 )
 
+SET UPDATE_AUTHORISED_BY="Anne.Robson"
 echo %date% %time% calling .\loadPR14base.bat with DBT_TARGET = %DBT_TARGET%
 call .\loadPR14base.bat
 
 echo %date% %time% calling .\loadPR14submeasures.bat with DBT_TARGET = %DBT_TARGET%
 call .\loadPR14submeasures.bat
 
+SET UPDATE_AUTHORISED_BY="ken.macdonald"
 echo %date% %time% calling .\loadPR19base.bat with DBT_TARGET = %DBT_TARGET%
 call .\loadPR19base.bat
 
-copy C:\dev\projects\OceanPython\src\main\resources\updates\KMc\* C:\dev\projects\OceanPython\src\main\resources\updates
+copy ..\main\resources\updates\KMc\* ..\main\resources\updates
 echo %date% %time% calling .\loadPR19updates.bat with DBT_TARGET = %DBT_TARGET%
 call .\loadPR19updates.bat
 
 SET UPDATE_AUTHORISED_BY="andy.duff"
-copy C:\dev\projects\OceanPython\src\main\resources\updates\AD\* C:\dev\projects\OceanPython\src\main\resources\updates
+copy ..\main\resources\updates\AD\* ..\main\resources\updates
 echo %date% %time% calling .\loadPR19updates.bat with DBT_TARGET = %DBT_TARGET%
 call .\loadPR19updates.bat
 
