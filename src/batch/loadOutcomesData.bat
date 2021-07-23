@@ -6,7 +6,7 @@ echo .
 echo %date% %time% running loadOutcomesData.bat ...
 
 @REM SET DBT_TARGET=dev
-SET DBT_TARGET=pbi
+SET DBT_TARGET=dev
 SET DBT_DIR=C:\Users\Niyati.Wawre\Ocean
 
 echo %date% %time% Ensuring we are in the batch directory.
