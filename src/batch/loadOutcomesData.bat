@@ -16,16 +16,16 @@ if NOT %CD%\ == %~dp0 (
     cd %~dp0
 )
 
-SET UPDATE_AUTHORISED_BY="Anne.Robson"
-echo %date% %time% calling .\loadPR14base.bat with DBT_TARGET = %DBT_TARGET%
-call .\loadPR14base.bat
-
-echo %date% %time% calling .\loadPR14submeasures.bat with DBT_TARGET = %DBT_TARGET%
-call .\loadPR14submeasures.bat
+@REM SET UPDATE_AUTHORISED_BY="Anne.Robson"
+@REM echo %date% %time% calling .\loadPR14base.bat with DBT_TARGET = %DBT_TARGET%
+@REM call .\loadPR14base.bat
+@REM
+@REM echo %date% %time% calling .\loadPR14submeasures.bat with DBT_TARGET = %DBT_TARGET%
+@REM call .\loadPR14submeasures.bat
 
 SET UPDATE_AUTHORISED_BY="ken.macdonald"
-echo %date% %time% calling .\loadPR19base.bat with DBT_TARGET = %DBT_TARGET%
-call .\loadPR19base.bat
+@REM echo %date% %time% calling .\loadPR19base.bat with DBT_TARGET = %DBT_TARGET%
+@REM call .\loadPR19base.bat
 
 copy ..\main\resources\updates\KMc\* ..\main\resources\updates
 echo %date% %time% calling .\loadPR19updates.bat with DBT_TARGET = %DBT_TARGET%
