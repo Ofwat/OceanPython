@@ -56,6 +56,7 @@ def read_pc_sheet(excel_sheet, pc_sheet, outcome_performance_type, pc_records, c
     for column in pc_data:
         list_of_cols.append(column)
     for i in list_of_cols:
+        pc_data[i] = validations.replace_dashes_with_nan(pc_data, i)
         pc_data[i] = validations.replace_null_with_None(pc_data, i)
     # end validation
 
