@@ -1,6 +1,7 @@
+import os
+
 import pyodbc
 import yaml
-import os
 
 
 def read_config_file():
@@ -13,10 +14,12 @@ def read_config_file():
 def sql_server_connection():
     dbinformation = read_config_file()
     conn = pyodbc.connect('Driver=' + dbinformation["driver"] + ';'
-                            'Server=' + dbinformation["server"] + ';'
-                            'Database=' + dbinformation["database"] + ';'
-                            'UID=' + dbinformation["user"] + ';'
-                            'PWD=' + dbinformation["password"] + ';')
+                                                                'Server=' + dbinformation["server"] + ';'
+                                                                                                      'Database=' +
+                          dbinformation["database"] + ';'
+                                                      'UID=' + dbinformation["user"] + ';'
+                                                                                       'PWD=' + dbinformation[
+                              "password"] + ';')
     return conn
 
 

@@ -1,11 +1,10 @@
-from service import actualsService
+import argparse
 
+from service import actualsService
 from service import pr14BaseService
 from service import pr14BaseSubmeasureService
 from service import pr19BaseApp1Service
 from service import pr19BaseApp1bService
-
-import argparse
 
 
 def main():

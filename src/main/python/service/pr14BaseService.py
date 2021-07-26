@@ -1,6 +1,6 @@
 import pandas as pd
-from util import validations
 from dao import pr14BaseDao
+from util import validations
 
 
 def upload_data_PR14_base(cli_args):

@@ -1,6 +1,6 @@
 import pandas as pd
-from util import validations
 from dao import pr14BaseSubmeasureDao
+from util import validations
 
 
 def upload_data_PR14_submeasues(cli_args):

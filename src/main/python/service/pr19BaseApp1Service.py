@@ -1,6 +1,6 @@
 import pandas as pd
-from util import validations
 from dao import pr19BaseApp1Dao
+from util import validations
 
 
 def upload_data_PR19_base(cli_args):

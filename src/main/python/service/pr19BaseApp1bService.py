@@ -1,12 +1,14 @@
 import pandas as pd
-from util import validations
 from dao import pr19BaseApp1bDao
+from util import validations
+
 
 def upload_data_PR19_App1b_base(cli_args):
     input_file_name = cli_args.input_file
     pd.set_option("display.precision", 18)
 
-    df3 = pd.read_excel(input_file_name, sheet_name='App1b', usecols="A,U:V,X:AH,AJ:AR,AX,BI:BM,CD:DW", skiprows=[0,1,2,3,4,5,6,7])
+    df3 = pd.read_excel(input_file_name, sheet_name='App1b', usecols="A,U:V,X:AH,AJ:AR,AX,BI:BM,CD:DW",
+                        skiprows=[0, 1, 2, 3, 4, 5, 6, 7])
     df3.columns = ['company', 'unique_id', 'outcome', 'pc_ref', 'performance_commitment', 'pc_short_description',
                    'price_control_allocation_water_resources', 'price_control_allocation_water_network_plus',
                    'price_control_allocation_wastewater_network_plus', 'price_control_allocation_bioresources_sludge',

@@ -1,5 +1,6 @@
 from util import dbUtils
 
+
 def insert_pr19_app1_data_in_table(df1):
     conn = dbUtils.sql_server_connection()
     schemanameused = dbUtils.schema_present()

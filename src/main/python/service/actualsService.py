@@ -50,7 +50,6 @@ def read_pc_sheet(excel_sheet, pc_sheet, outcome_performance_type, pc_records, c
     data_area_of_all_pcs.to_csv('C:/Users/Niyati.Wawre/PycharmProjects/OceanPython/src/main/resources/xfghdfg.csv')
     pc_data = select_bespoke_pcs(pc_sheet, data_area_of_all_pcs)
 
-
     # validation
     list_of_cols = []
     for column in pc_data:

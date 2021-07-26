@@ -24,7 +24,7 @@ def replace_yes_with_true(dataframe, iteratorvariable):
 def is_numeric_and_only_numeric(dataframe, iteratorvariable):
     dataframe['isnumeric_' + iteratorvariable] = (dataframe[iteratorvariable].apply(
         lambda x: isinstance(x, (int, np.int64)))) | (dataframe[iteratorvariable].apply(
-                                                         lambda x: isinstance(x, (float, np.float64))))
+        lambda x: isinstance(x, (float, np.float64))))
     dataframe['isnumeric_' + iteratorvariable].astype('bool')
     dataframe['onlynumeric_' + iteratorvariable] = ''
     dataframe['onlynumeric_' + iteratorvariable] = np.where(dataframe['isnumeric_' + iteratorvariable] == True,
@@ -34,7 +34,7 @@ def is_numeric_and_only_numeric(dataframe, iteratorvariable):
         na_mask, 'onlynumeric_' + iteratorvariable].astype(float).round(16)
     dataframe['notes_' + iteratorvariable] = ''
     dataframe['notes_' + iteratorvariable] = np.where(dataframe['isnumeric_' + iteratorvariable] == False,
-                                                                dataframe[iteratorvariable], None)
+                                                      dataframe[iteratorvariable], None)
     na_mask = dataframe['notes_' + iteratorvariable].notnull()
 
 
