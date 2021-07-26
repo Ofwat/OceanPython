@@ -105,7 +105,7 @@ def upload_data_PR14_base(cli_args):
                     'underp_payment4_incentive_rate_gbpm_column': 'object',
                     'outp_payment1_incentive_rate_gbpm_column': 'object',
                     'outp_payment2_incentive_rate_gbpm_column': 'object',
-                    'standard_odi_operand': 'float64', 'standard_odi_operand_note': 'object',
+                    'standard_odi_operand': 'object', 'standard_odi_operand_note': 'object',
                     'performance_level_actual_2014_15': 'object', 'performance_level_actual_2015_16': 'object',
                     'pcl_met_2015_16': 'object', 'outp_payment_or_underp_payment_in_period_odis_2015_16': 'object',
                     'outp_payment_or_underp_payment_in_period_odis_gbpm_2015_16': 'object',
