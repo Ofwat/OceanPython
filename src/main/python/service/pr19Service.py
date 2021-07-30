@@ -105,6 +105,22 @@ def upload_data_PR19_base(cli_args):
         df1[j] = validations.replace_null_with_None(df1, j)
         if j in ['scheme_specific_factor', 'asset_health', 'nep', 'aim']:
             df1[j] = validations.replace_yes_with_true(df1, j)
+        if j in ['enhanced_underp_payment_collar_2020_21',
+                   'enhanced_underp_payment_collar_2021_22', 'enhanced_underp_payment_collar_2022_23',
+                   'enhanced_underp_payment_collar_2023_24', 'enhanced_underp_payment_collar_2024_25',
+                   'standard_underp_payment_collar_2020_21', 'standard_underp_payment_collar_2021_22',
+                   'standard_underp_payment_collar_2022_23', 'standard_underp_payment_collar_2023_24',
+                   'standard_underp_payment_collar_2024_25', 'underp_payment_deadband_2020_21',
+                   'underp_payment_deadband_2021_22', 'underp_payment_deadband_2022_23',
+                   'underp_payment_deadband_2023_24',
+                   'underp_payment_deadband_2024_25', 'outp_payment_deadband_2020_21', 'outp_payment_deadband_2021_22',
+                   'outp_payment_deadband_2022_23', 'outp_payment_deadband_2023_24', 'outp_payment_deadband_2024_25',
+                   'standard_outp_payment_cap_2020_21', 'standard_outp_payment_cap_2021_22',
+                   'standard_outp_payment_cap_2022_23', 'standard_outp_payment_cap_2023_24',
+                   'standard_outp_payment_cap_2024_25', 'enhanced_outp_payment_cap_2020_21',
+                   'enhanced_outp_payment_cap_2021_22', 'enhanced_outp_payment_cap_2022_23',
+                   'enhanced_outp_payment_cap_2023_24', 'enhanced_outp_payment_cap_2024_25']:
+            df1[j] = validations.convert_time(df1, j)
         if j in ['underp_payment_incentive_standard_underp_payment1_tier2_where_tiers_apply_column',
                  'underp_payment_incentive_standard_underp_payment2_tier1_where_tiers_apply_column',
                  'underp_payment_incentive_standard_underp_payment3_tier3_where_tiers_apply_column',
