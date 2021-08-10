@@ -1,13 +1,12 @@
 import pandas as pd
-from util import validations
 from dao import pr14SubmeasureDao
+from util import validations
 
 
 def upload_data_PR14_submeasues(cli_args):
     input_file_name = cli_args.input_file
-    pd.set_option("display.precision", 18)
-    df2 = pd.read_excel(input_file_name,
-                        sheet_name='Sub-measures', usecols="A:BB,BK,BL,BG:BH,BM:BR", skiprows=[0, 1])
+    # pd.set_option("display.precision", 18)
+    df2 = pd.read_excel(input_file_name, sheet_name='Sub-measures', usecols="A:BB,BK,BL,BG:BH,BM:BR", skiprows=[0, 1])
     df2.columns = ['unique_id', 'company_type', 'company', 'element_acronym', 'pc_ref', 'performance_commitment',
                    'odi_type', 'primary_category', 'pc_unit_description', 'starting_level_pr14_fd_2014_15',
                    'pcl_2015_16',

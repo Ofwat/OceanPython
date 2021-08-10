@@ -49,7 +49,6 @@ def read_pc_sheet(excel_sheet, pc_sheet, outcome_performance_type, pc_records, c
     data_area_of_all_pcs = spreadsheet.iloc[5:, 1:10]
     pc_data = select_bespoke_pcs(pc_sheet, data_area_of_all_pcs)
 
-
     # validation
     list_of_cols = []
     for column in pc_data:
@@ -96,7 +95,7 @@ def isCellEmpty(cell):
     #     print("type: ", type(cell), " empty with not cell")
 
     # This is all ok
-    if None == cell:
+    if cell is None:
         return True
     if isinstance(cell, (int, float)) and math.isnan(cell):
         return True

@@ -11,20 +11,23 @@ class PCRecord:
         self.unit = unit
         self.decimal_places = decimal_places
         if type(pcl_actual_pry) == int or type(pcl_actual_pry) == float:
-            self.pcl_actual_pry = round(pcl_actual_pry,18)
+            self.pcl_actual_pry = round(pcl_actual_pry, 18)
         else:
             self.pcl_actual_pry = pcl_actual_pry
         if type(pcl_actual_cry) == int or type(pcl_actual_cry) == float:
-            self.pcl_actual_cry = round(pcl_actual_cry,18)
+            self.pcl_actual_cry = round(pcl_actual_cry, 18)
         else:
             self.pcl_actual_cry = pcl_actual_cry
         self.pcl_met = pcl_met
-        if type(outperformance_or_underperformance_payment) == int or type(outperformance_or_underperformance_payment) == float:
-            self.outperformance_or_underperformance_payment = round(outperformance_or_underperformance_payment,18)
+        if type(outperformance_or_underperformance_payment) == int or type(
+                outperformance_or_underperformance_payment) == float:
+            self.outperformance_or_underperformance_payment = round(outperformance_or_underperformance_payment, 18)
         else:
             self.outperformance_or_underperformance_payment = outperformance_or_underperformance_payment
-        if type(forecast_of_total_2020_25_outperformance_or_underperformance_payment) == int or type(forecast_of_total_2020_25_outperformance_or_underperformance_payment) == float:
-            self.forecast_of_total_2020_25_outperformance_or_underperformance_payment = round(forecast_of_total_2020_25_outperformance_or_underperformance_payment, 18)
+        if type(forecast_of_total_2020_25_outperformance_or_underperformance_payment) == int or type(
+                forecast_of_total_2020_25_outperformance_or_underperformance_payment) == float:
+            self.forecast_of_total_2020_25_outperformance_or_underperformance_payment = round(
+                forecast_of_total_2020_25_outperformance_or_underperformance_payment, 18)
         else:
             self.forecast_of_total_2020_25_outperformance_or_underperformance_payment = forecast_of_total_2020_25_outperformance_or_underperformance_payment
         self.company_acronym = company_acronym
@@ -58,12 +61,16 @@ class PCRecord:
         print("comment", "=", self.comment)
 
     def data_for_db(self):
-        basic_tuple = self.updated_at, str(self.excel_file), str(self.excel_user), str(self.comment), 'AMP7', str(self.year), str(self.submission_status), str(self.unique_reference), str(self.company_acronym), str(self.company_name), str(self.pcl_actual_cry), str(self.pcl_met), str(self.outperformance_or_underperformance_payment), str(self.forecast_of_total_2020_25_outperformance_or_underperformance_payment)
+        basic_tuple = self.updated_at, str(self.excel_file), str(self.excel_user), str(self.comment), 'AMP7', str(
+            self.year), str(self.submission_status), str(self.unique_reference), str(self.company_acronym), str(
+            self.company_name), str(self.pcl_actual_cry), str(self.pcl_met), str(
+            self.outperformance_or_underperformance_payment), str(
+            self.forecast_of_total_2020_25_outperformance_or_underperformance_payment)
         if 'None' in basic_tuple:
             list_of_tuple = list(basic_tuple)
             new_list_to_supply = []
             for value in list_of_tuple:
-                if value == 'None': #or value == '-':
+                if value == 'None':  # or value == '-':
                     value = None
                 new_list_to_supply.append(value)
             new_tuple = tuple(new_list_to_supply)

@@ -1,12 +1,11 @@
 import pandas as pd
-from util import validations
 from dao import pr14Dao
+from util import validations
 
 
 def upload_data_PR14_base(cli_args):
     input_file_name = cli_args.input_file
-    pd.set_option("display.precision", 18)
-
+    # pd.set_option("display.precision", 18)
     df = pd.read_excel(input_file_name, sheet_name='PC list', usecols="A:DB,DU:DZ,EC:EJ", skiprows=[0])
     df.columns = ['unique_id', 'company_type', 'company', 'element_name', 'element_acronym', 'outcome', 'pc_ref',
                   'annex',

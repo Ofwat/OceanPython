@@ -1,6 +1,7 @@
+import os
+
 import pyodbc
 import yaml
-import os
 
 
 def read_config_file():
