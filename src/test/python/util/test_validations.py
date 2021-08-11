@@ -62,14 +62,13 @@ class TestValidatation(unittest.TestCase):
         expected_df = pd.DataFrame(data=expected_value)
 
         validations.is_numeric_and_only_numeric(expected_df, 'column1')
-        print(expected_df)
-        print(expected_df.dtypes)
+
         actual_value = {'column1': [2.1345634563456457, 5.42e-05, 24],
                         'isnumeric_column1': [True, True, True],
                         'onlynumeric_column1': [2.1345634563456457, 5.42e-05, 24],
                         'notes_column1': [None, None, None]}
         actual_df = pd.DataFrame.from_dict(data=actual_value)
-        print(actual_df.dtypes)
+
         assert_frame_equal(expected_df, actual_df)
 
     def test_is_numeric_and_only_numeric_with_text_value(self):
@@ -77,14 +76,21 @@ class TestValidatation(unittest.TestCase):
         expected_df = pd.DataFrame(data=expected_value)
 
         validations.is_numeric_and_only_numeric(expected_df, 'column1')
-        print(expected_df)
-        print(expected_df.dtypes)
         actual_value = {'column1': [2.1345634563456457, 5.42e-05, 24, 'A sentence'],
                         'isnumeric_column1': [True, True, True, False],
                         'onlynumeric_column1': [2.1345634563456457, 5.42e-05, 24, None],
                         'notes_column1': [None, None, None, 'A sentence']}
         actual_df = pd.DataFrame.from_dict(data=actual_value).astype(
             {'column1': object, 'isnumeric_column1': bool, 'onlynumeric_column1': object, 'notes_column1': object})
-        print(actual_df)
-        print(actual_df.dtypes)
         assert_frame_equal(expected_df, actual_df)
+
+    def test_change_company_to_UUW(self):
+        expected_company_value = {'company': ['UU', 'AFW']}
+        expected_company_df = pd.DataFrame(data=expected_company_value)
+
+        validations.change_company_to_UUW(expected_company_df)
+
+        actual_company_value = {'company': ['UUW', 'AFW']}
+        actual_company_df = pd.DataFrame(data=actual_company_value)
+
+        assert_frame_equal(expected_company_df, actual_company_df)
