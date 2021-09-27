@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from pandas._testing import assert_frame_equal
 
-from main.python.util import validations
+from src.main.python.util import validations
 
 
 class TestValidatation(unittest.TestCase):
