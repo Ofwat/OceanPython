@@ -25,6 +25,6 @@ steps:
   displayName: 'Install dependencies'
 
 - script: |
-    pip install pytest pytest-azurepipelines
-    pytest
-  displayName: 'pytest'
+    pip install unittest2
+    python -m unittest src/test/python/util/test_validations.py
+  displayName: 'Run unittest'
