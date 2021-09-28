@@ -1,4 +1,4 @@
-FROM python:3.93
+FROM python:3.9
 
 ADD src/main/python/outcomesDataProc.py .
 
