@@ -1,6 +1,6 @@
 FROM python:3.9
 
-ADD src/main/python/outcomesDataProc.py .
+ADD /src/main/python/outcomesDataProc.py .
 
 COPY requirements.txt .
 
