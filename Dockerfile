@@ -6,4 +6,4 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-CMD ["python", "/src/main/python/outcomesDataProc.py"]
+CMD ["python", "./src/main/python/outcomesDataProc.py"]
