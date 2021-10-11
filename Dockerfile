@@ -10,4 +10,4 @@ ADD /profiles.yml /.dbt/
 
 RUN pip install -r requirements.txt
 
-CMD ["python", "./testsrc/main/python/outcomesDataProc.py"]
+CMD ["python", "./src/main/python/outcomesDataProc.py"]
