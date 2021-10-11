@@ -7,7 +7,7 @@ ADD requirements.txt /
 
 RUN userprofile=/
 RUN mkdir /.dbt
-ADD C:/Users/niyati.wawre/.dbt/profiles.yml /.dbt/
+ADD /profiles.yml /.dbt/
 
 RUN pip install -r requirements.txt
 
