@@ -1,9 +1,10 @@
 FROM python:3.9
 
-ADD ./src/main/python/outcomesDataProc.py /
+RUN mkdir /testsrc
+COPY src/ /testsrc
 
-COPY requirements.txt .
+ADD requirements.txt /
 
 RUN pip install -r requirements.txt
 
-CMD ["python", "./outcomesDataProc.py"]
+CMD ["python", "./testsrc/main/python/outcomesDataProc.py"]
