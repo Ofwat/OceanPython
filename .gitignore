@@ -23,6 +23,7 @@ sdist/
 var/
 wheels/
 resources/
+resources_July2021/
 pip-wheel-metadata/
 share/python-wheels/
 *.egg-info/

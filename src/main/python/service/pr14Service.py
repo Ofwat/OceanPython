@@ -18,8 +18,8 @@ def upload_data_PR14_base(cli_args):
                   'PR14_comparative_internal_sewer_flooding',
                   'scheme_specific_factor', 'asset_health', 'nep', 'aim', 'no_of_sub_measures', 'financial_odi_2015_16',
                   'financial_odi_2016_17', 'financial_odi_2017_18', 'financial_odi_2018_19', 'financial_odi_2019_20',
-                  'underp_payment_collar_2015_16', 'underp_payment_collar_2016_17', 'underp_payment_collar_2017_18',
-                  'underp_payment_collar_2018_19', 'underp_payment_collar_2019_20', 'underp_payment_deadband_2015_16',
+                  'underp_payment_collar_2015_16_column', 'underp_payment_collar_2016_17_column', 'underp_payment_collar_2017_18_column',
+                  'underp_payment_collar_2018_19_column', 'underp_payment_collar_2019_20_column', 'underp_payment_deadband_2015_16',
                   'underp_payment_deadband_2016_17', 'underp_payment_deadband_2017_18',
                   'underp_payment_deadband_2018_19',
                   'underp_payment_deadband_2019_20', 'outp_payment_deadband_2015_16', 'outp_payment_deadband_2016_17',
@@ -88,9 +88,9 @@ def upload_data_PR14_base(cli_args):
                     'no_of_sub_measures': 'int64', 'financial_odi_2015_16': 'object', 'financial_odi_2016_17': 'object',
                     'financial_odi_2017_18': 'object', 'financial_odi_2018_19': 'object',
                     'financial_odi_2019_20': 'object',
-                    'underp_payment_collar_2015_16': 'object', 'underp_payment_collar_2016_17': 'object',
-                    'underp_payment_collar_2017_18': 'object', 'underp_payment_collar_2018_19': 'object',
-                    'underp_payment_collar_2019_20': 'object', 'underp_payment_deadband_2015_16': 'object',
+                    'underp_payment_collar_2015_16_column': 'object', 'underp_payment_collar_2016_17_column': 'object',
+                    'underp_payment_collar_2017_18_column': 'object', 'underp_payment_collar_2018_19_column': 'object',
+                    'underp_payment_collar_2019_20_column': 'object', 'underp_payment_deadband_2015_16': 'object',
                     'underp_payment_deadband_2016_17': 'object', 'underp_payment_deadband_2017_18': 'object',
                     'underp_payment_deadband_2018_19': 'object', 'underp_payment_deadband_2019_20': 'object',
                     'outp_payment_deadband_2015_16': 'object', 'outp_payment_deadband_2016_17': 'object',
@@ -167,7 +167,10 @@ def upload_data_PR14_base(cli_args):
             df[i] = validations.replace_yes_with_true(df, i)
         if i in ['underp_payment1_incentive_rate_gbpm_column', 'underp_payment2_incentive_rate_gbpm_column',
                  'underp_payment3_incentive_rate_gbpm_column', 'underp_payment4_incentive_rate_gbpm_column',
-                 'outp_payment1_incentive_rate_gbpm_column', 'outp_payment2_incentive_rate_gbpm_column']:
+                 'outp_payment1_incentive_rate_gbpm_column', 'outp_payment2_incentive_rate_gbpm_column',
+                 'underp_payment_collar_2015_16_column', 'underp_payment_collar_2016_17_column', 
+                 'underp_payment_collar_2017_18_column', 'underp_payment_collar_2018_19_column', 
+                 'underp_payment_collar_2019_20_column']:
             validations.is_numeric_and_only_numeric(df, i)
 
         if i == 'company':
@@ -179,19 +182,36 @@ def upload_data_PR14_base(cli_args):
                  'onlynumeric_underp_payment4_incentive_rate_gbpm_column': 'underp_payment4_incentive_rate_gbpm',
                  'onlynumeric_outp_payment1_incentive_rate_gbpm_column': 'outp_payment1_incentive_rate_gbpm',
                  'onlynumeric_outp_payment2_incentive_rate_gbpm_column': 'outp_payment2_incentive_rate_gbpm',
-                 'notes_underp_payment1_incentive_rate_gbpm_column': 'notes_underp_payment1_incentive_rate_gbpm',
+                 'onlynumeric_underp_payment_collar_2015_16_column': 'underp_payment_collar_2015_16', 
+                 'onlynumeric_underp_payment_collar_2016_17_column': 'underp_payment_collar_2016_17', 
+                 'onlynumeric_underp_payment_collar_2017_18_column': 'underp_payment_collar_2017_18', 
+                 'onlynumeric_underp_payment_collar_2018_19_column': 'underp_payment_collar_2018_19', 
+                 'onlynumeric_underp_payment_collar_2019_20_column': 'underp_payment_collar_2019_20',
+                 })
+    df = df.rename(
+        columns={'notes_underp_payment1_incentive_rate_gbpm_column': 'notes_underp_payment1_incentive_rate_gbpm',
                  'notes_underp_payment2_incentive_rate_gbpm_column': 'notes_underp_payment2_incentive_rate_gbpm',
                  'notes_underp_payment3_incentive_rate_gbpm_column': 'notes_underp_payment3_incentive_rate_gbpm',
                  'notes_underp_payment4_incentive_rate_gbpm_column': 'notes_underp_payment4_incentive_rate_gbpm',
                  'notes_outp_payment1_incentive_rate_gbpm_column': 'notes_outp_payment1_incentive_rate_gbpm',
                  'notes_outp_payment2_incentive_rate_gbpm_column': 'notes_outp_payment2_incentive_rate_gbpm',
+                 'notes_underp_payment_collar_2015_16_column': 'notes_underp_payment_collar_2015_16', 
+                 'notes_underp_payment_collar_2016_17_column': 'notes_underp_payment_collar_2016_17', 
+                 'notes_underp_payment_collar_2017_18_column': 'notes_underp_payment_collar_2017_18', 
+                 'notes_underp_payment_collar_2018_19_column': 'notes_underp_payment_collar_2018_19', 
+                 'notes_underp_payment_collar_2019_20_column': 'notes_underp_payment_collar_2019_20',
                  })
     df.drop(columns=['isnumeric_underp_payment1_incentive_rate_gbpm_column',
                      'isnumeric_underp_payment2_incentive_rate_gbpm_column',
                      'isnumeric_underp_payment3_incentive_rate_gbpm_column',
                      'isnumeric_underp_payment4_incentive_rate_gbpm_column',
                      'isnumeric_outp_payment1_incentive_rate_gbpm_column',
-                     'isnumeric_outp_payment2_incentive_rate_gbpm_column'], axis=1, inplace=True)
+                     'isnumeric_outp_payment2_incentive_rate_gbpm_column',
+                     'isnumeric_underp_payment_collar_2015_16_column', 
+                     'isnumeric_underp_payment_collar_2016_17_column', 
+                     'isnumeric_underp_payment_collar_2017_18_column', 
+                     'isnumeric_underp_payment_collar_2018_19_column', 
+                     'isnumeric_underp_payment_collar_2019_20_column'], axis=1, inplace=True)
 
     if not cli_args.test_run:
         pr14Dao.insert_pr14_data_in_table(df)
